@@ -1,16 +1,16 @@
 import './App.scss';
-import { BrowserRouter, Router, Route } from 'react-router-dom';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import WarehousePage from './pages/WarehousePage';
+import InventoryPage from './pages/InventoryPage';
 
 function App() {
   return (
     <>
     <BrowserRouter>
-    <Router>
-      <Router>
-        
-      </Router>
-    </Router>
+    <Routes>
+        <Route path="/warehouse" element={ < WarehousePage /> } />
+        <Route path="/inventory" element={ < InventoryPage /> } />
+    </Routes>
     </BrowserRouter>
     </>
   );
