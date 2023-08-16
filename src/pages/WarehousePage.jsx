@@ -1,7 +1,13 @@
+import React from "react";
+import WarehouseDetails from "../components/WarehouseDetails/WarehouseDetails";
+
 function WarehousePage() {
     return (
-        <h1>Welcome to the Warehouse Page!!</h1>
+        <>
+        <WarehouseDetails />
+        </>
     );
 }
 
 export default WarehousePage;
+

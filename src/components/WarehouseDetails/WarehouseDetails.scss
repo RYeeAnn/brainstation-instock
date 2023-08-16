@@ -1,0 +1,75 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.warehouse-details {
+    flex-direction: column;
+    padding-top: 2rem;
+    
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
+  .warehouse-detail {   
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-right: 5rem;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+
+    @include desktop {
+      padding-right: 14rem;
+    }
+
+    &__title {
+        color: $Slate;
+        font-style: normal;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 16px;
+    }
+
+    &__address {
+        padding-right: 70px;
+    }
+
+    &__info {
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0;
+        padding-top: 0.2rem;
+
+        &--address {
+          
+          @include tablet {
+            width: 52%;
+          }
+        }
+    }
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+
+    @include tablet {
+      border-left: 1px solid $Cloud;
+      padding-left: 4rem;
+    }
+
+    @include desktop {
+      gap: 10rem;
+      padding-right: 8.5rem;
+
+    }
+  }
+  
