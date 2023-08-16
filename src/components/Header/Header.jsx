@@ -10,10 +10,10 @@ function Header() {
     <div className="header">
         <img className="header__logo" src={logo1} alt="Instock" />
         <ul className="header__links">
-            <li>
+            <li className="header__link-listItem">
                 <Link className="header__link header__link--active">Warehouses</Link>
             </li>
-            <li>
+            <li className="header__link-listItem">
                 <Link className="header__link">Inventory</Link>
             </li>
         </ul>
