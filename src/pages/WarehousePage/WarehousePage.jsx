@@ -1,10 +1,9 @@
-import DataList from "../../components/DataList/DataList";
+import WarehouseDataList from "../../components/WarehouseDataList/WarehouseDataList";
 
 function WarehousePage() {
     return (
         <>
-            <h1>Welcome to the Warehouse Page!!</h1>
-            <DataList />
+            <WarehouseDataList />
         </>
     );
 }
