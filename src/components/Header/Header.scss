@@ -3,10 +3,11 @@
 
 .header {
     background-color: $Graphite;
-    padding: 1rem;
     padding-top: 2rem;
     padding-bottom: 5.5rem;
+    padding-left: 0;
     text-align: center;
+    width: 100vw;
 
     @include tablet {
         display: flex;
@@ -22,25 +23,37 @@
     }
 
     &__logo {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     &__links {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         list-style: none;
+        width: 100%;
+        margin-top: 0.5rem;
+
+        @include tablet {
+            justify-content: end;
+        }
+
+        
     }
 
     &__link {
         color: $Cloud;
         text-decoration: none;
-        padding: 0.8rem 4rem;
+        padding: 0.8rem 2.5rem;
         border-radius: 20px;
+        // width: 30%;
 
         @include tablet {
             padding: 0.6rem 1rem;
             margin: 0.5rem;
+            
         }
+
+       
 
         &--active {
             background-color: $Instock-Black;
