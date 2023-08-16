@@ -8,7 +8,7 @@ function WarehouseDetails() {
         <div className="warehouse-details">
           <div className="warehouse-detail">
             <h3 className="warehouse-detail__title warehouse-detail__address">WAREHOUSE ADDRESS:</h3>
-            <p className="warehouse-detail__info">33 Pearl Street SW, Washington, USA</p>
+            <p className="warehouse-detail__info warehouse-detail__info--address">33 Pearl Street SW, Washington, USA</p>
           </div>
           <div className="contact-details">
             <div className="warehouse-detail__contact-name">
