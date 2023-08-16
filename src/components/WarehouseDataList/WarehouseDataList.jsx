@@ -21,19 +21,19 @@ function WarehouseDataList() {
     )
 
     return (
-        <ul className="datalist__header-unordered-list">
-            <li className="datalist__header-list">
-                <p className="datalist__header-list-items">WAREHOUSE</p>
-                <p className="datalist__header-list-items">ADDRESS</p>
-                <p className="datalist__header-list-items">CONTACT NAME</p>
-                <p className="datalist__header-list-items">CONTACT INFORMATION</p>
-                <p className="datalist__header-list-items">ACTIONS</p>
+        <ul className="warehouse-data-list__header-unordered-list">
+            <li className="warehouse-data-list__header-list">
+                <p className="warehouse-data-list__header-list-items">WAREHOUSE</p>
+                <p className="warehouse-data-list__header-list-items">ADDRESS</p>
+                <p className="warehouse-data-list__header-list-items">CONTACT NAME</p>
+                <p className="warehouse-data-list__header-list-items">CONTACT INFORMATION</p>
+                <p className="warehouse-data-list__header-list-items">ACTIONS</p>
             </li>
 
             {
                 warehouseData.map((warehouse) => {
                     return (
-                        <li key={warehouse.id} className="datalist__header-list">
+                        <li key={warehouse.id} className="warehouse-data-list__header-list">
                             <p>{warehouse.warehouse_name}</p>
                             <p>{warehouse.address}</p>
                             <p>{warehouse.contact_name}</p>
