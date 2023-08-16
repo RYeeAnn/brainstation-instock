@@ -14,7 +14,7 @@ function Header() {
         <img className="header__logo" src={logo1} alt="Instock" />
         <ul className="header__links" >
             <li className="header__link-listItem">
-                <NavLink to="/warehouse" className="header__link">Warehouses</NavLink>
+                <NavLink to="/warehouses" className="header__link">Warehouses</NavLink>
             </li>
             <li className="header__link-listItem">
                 <NavLink to="/inventory" className="header__link">Inventory</NavLink>
