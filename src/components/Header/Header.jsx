@@ -8,10 +8,10 @@ import logo2 from '../../assets/Logo/InStock-Logo_2x.png'
 function Header() {
   return (
     <div className="header">
-        <img src={logo1} alt="Instock" />
+        <img className="header__logo" src={logo1} alt="Instock" />
         <ul className="header__links">
             <li>
-                <Link className="header__link">Warehouses</Link>
+                <Link className="header__link header__link--active">Warehouses</Link>
             </li>
             <li>
                 <Link className="header__link">Inventory</Link>
