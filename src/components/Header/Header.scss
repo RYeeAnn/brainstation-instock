@@ -2,16 +2,49 @@
 @use '../../styles/partials/mixins' as *;
 
 .header {
-    background-color: $Instock-Black;
-    padding: 2rem;
+    background-color: $Graphite;
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 5.5rem;
+    text-align: center;
+
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 2rem;
+        padding-top: 2.2rem;
+    }
+
+    @include desktop {
+        padding-left: 9rem;
+        padding-right: 9rem;
+        padding-bottom: 7rem; 
+    }
+
+    &__logo {
+        margin-bottom: 1rem;
+    }
 
     &__links {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        list-style: none;
     }
 
     &__link {
         color: $Cloud;
         text-decoration: none;
+        padding: 0.8rem 4rem;
+        border-radius: 20px;
+
+        @include tablet {
+            padding: 0.6rem 1rem;
+            margin: 0.5rem;
+        }
+
+        &--active {
+            background-color: $Instock-Black;
+            color: $White;
+        }
     }
 }
