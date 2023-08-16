@@ -5,7 +5,6 @@ import WarehouseDataList from "../../components/WarehouseDataList/WarehouseDataL
 function WarehousesPage() {
     return (
         <>
-        <WarehouseDetails />
         <WarehouseDataList />
         </>
     );
