@@ -1,0 +1,17 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.header {
+    background-color: $Instock-Black;
+    padding: 2rem;
+
+    &__links {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__link {
+        color: $Cloud;
+        text-decoration: none;
+    }
+}
