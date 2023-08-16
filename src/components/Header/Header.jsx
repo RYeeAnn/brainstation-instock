@@ -3,7 +3,6 @@ import './Header.scss';
 import { NavLink } from 'react-router-dom';
 
 import logo1 from '../../assets/Logo/InStock-Logo_1x.png'
-import logo2 from '../../assets/Logo/InStock-Logo_2x.png'
 
 
 

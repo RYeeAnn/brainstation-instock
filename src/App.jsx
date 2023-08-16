@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-          <Route path="/warehouse" element={ < WarehousePage activePage={activePage} setActivePage={setActivePage} /> } />
+          <Route path="/warehouse" element={ < WarehousePage /> } />
           <Route path="/inventory" element={ < InventoryPage /> } />
       </Routes>
       <Footer />
