@@ -1,0 +1,112 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/fonts" as *;
+
+.warehouse-data-list {
+
+    font-family: "Titillium Web";
+    width: 80%;
+
+    &__section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__header-unordered-list {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        margin: 1rem;
+        width: 100%;
+    }
+
+    &__header-list {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: $Light-Grey;
+        height: 2.5rem;
+        flex-shrink: 0;
+        padding: 0px 40px;
+    }
+
+    &__header {
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 19%;
+    }
+
+    &__header-list-items {
+        display: inline-flex;
+        flex-direction: column;
+        color: $Slate;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.125rem; /* 150% */
+        text-transform: uppercase;
+        margin-right: 0.25rem;
+    }
+
+    &__header-sort {
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+    }
+
+    &__content-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 4.75rem;
+        border-bottom: 2px solid $Cloud;
+        padding: 0px 40px;
+    }
+
+    &__content-list-items {
+        color: $Instock-Black;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.375rem; /* 157.143% */
+
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 19%;
+        
+
+        &--column {
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    }
+
+    &__content-warehouse {
+        color: $Instock-Indigo;
+        text-decoration: none;
+    }
+
+    &__content-warehouse-chevron {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    &__content-list-images {
+        height: 24px;
+        width: 24px;
+        flex-shrink: 0;
+    
+        &--left {
+            margin-right: 1rem;
+        }
+    }
+}
