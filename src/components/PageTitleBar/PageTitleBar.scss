@@ -1,0 +1,29 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.pageTitleBar {
+    display: flex;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid $Cloud;
+    justify-content: space-between;
+
+    &__arrow-title-container {
+        display: flex;
+    }
+
+    &__back-arrow {
+        margin-right: 0.6rem;
+    }
+}
+
+.button-edit {
+    border-radius: 20px;
+        border: 1px $Cloud solid;
+        width: 5rem;
+        height: 2.3rem;
+        background-color: $Instock-Indigo;
+        color: $White;
+        font-size: 13px;
+}
