@@ -2,11 +2,13 @@
 @use '../../styles/partials/mixins' as *;
 
 .titleBar {
-
+    margin: 16px;
+    padding-top: 2rem;
     
     @include tablet {
         display: flex;
     }
+    
 
     &__search {
         border-radius: 15px;
@@ -15,6 +17,8 @@
         background-repeat: no-repeat;
         background-position-x: right;
         width: 80%;
+        margin: 16px 0;
+        
     }
 
     &__button {
