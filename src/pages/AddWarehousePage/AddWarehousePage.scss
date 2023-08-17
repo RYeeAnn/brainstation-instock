@@ -1,0 +1,9 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.addWarehouse {
+
+    &__title-container {
+        display: flex;
+    }
+}

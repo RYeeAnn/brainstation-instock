@@ -19,6 +19,8 @@
     z-index: 7;
     background-color: white;
     border-radius: 3px;
+    box-shadow: 1px 1px 3px $Cloud;
+
 
     @include tablet {
       width: 94%;
