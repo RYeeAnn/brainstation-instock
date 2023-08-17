@@ -1,0 +1,78 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.pageTitleBarSearch {
+    margin: 16px;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+
+    border-bottom: 1px $Cloud solid;
+    width: 100%;
+    
+    
+    
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 0;
+        border: none;
+        margin-bottom: 0;
+
+    }
+    
+
+    &__search {
+        border-radius: 15px;
+        padding: 0.4rem;
+        background-image: url(../../assets/Icons/search-24px.svg);
+        background-repeat: no-repeat;
+        background-position-x: right;
+        width: 85%;
+        margin: 16px 0;
+        margin-left: 1.5rem;
+        border: 1px $Cloud solid;
+
+        @include tablet {
+            margin-bottom: 0;
+            margin-top: 0;
+            height: 2.2rem;
+            width: 15rem;
+            margin-left: 0;
+        }
+        
+    }
+
+    &__search-add-container {
+        @include tablet {
+            display: flex;
+            margin-right: 1rem;
+        }
+       
+    }
+
+    
+
+    &__button {
+        background-color: $Instock-Indigo;
+        color: $White;
+        border-radius: 15px;
+        padding: 0.5rem;
+        width: 85%;
+        margin-left: 1.5rem;
+        border: 1px $Cloud solid;
+
+        @include tablet {
+            max-height: 2.2rem;
+            width: 12rem;
+            border-radius: 20px;
+            // margin-left: 0;
+            margin-right: 2rem;
+        }
+    }
+
+    &__title {
+        margin-left: 1.5rem;
+    }
+
+
+}
