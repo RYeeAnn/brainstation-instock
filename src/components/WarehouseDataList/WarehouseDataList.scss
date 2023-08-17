@@ -1,5 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
 
 .warehouse-data-list {
 
@@ -11,6 +12,10 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+
+        @include mobile {
+            flex-direction: column;
+        }
     }
 
     &__header-unordered-list {
@@ -23,15 +28,22 @@
     }
 
     &__header-list {
-        list-style-type: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        background-color: $Light-Grey;
-        height: 2.5rem;
-        flex-shrink: 0;
-        padding: 0px 40px;
+
+        @include mobile {
+            visibility: hidden;
+        }
+
+        @include tablet {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: $Light-Grey;
+            height: 2.5rem;
+            flex-shrink: 0;
+            padding: 0px 40px;
+        }
     }
 
     &__header {
@@ -48,9 +60,14 @@
         font-size: 0.75rem;
         font-style: normal;
         font-weight: 600;
-        line-height: 1.125rem; /* 150% */
+        line-height: 1.125rem;
+        /* 150% */
         text-transform: uppercase;
         margin-right: 0.25rem;
+
+        &--modified {
+            padding-left: 2rem;
+        }
     }
 
     &__header-sort {
@@ -64,9 +81,43 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 4.75rem;
         border-bottom: 2px solid $Cloud;
         padding: 0px 40px;
+
+        @include mobile {
+            // height: 10.75rem;
+            height: 15.75rem;
+            flex-direction: column;
+        }
+
+        @include desktop {
+            height: 4.75rem;
+        }
+    }
+
+    &__content-list-div {
+        display: flex;
+
+        @include mobile {
+            // flex-direction: column;
+        }
+    }
+
+    &__content-list-wrapper {
+
+        @include mobile {
+            display: inline-flex;
+            flex-direction: column;
+            // width: 40%;
+
+            &--left {
+                align-items: flex-start;
+            }
+
+            &--right {
+                align-items: flex-end;
+            }
+        }
     }
 
     &__content-list-items {
@@ -74,13 +125,26 @@
         font-size: 0.875rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 1.375rem; /* 157.143% */
+        line-height: 1.375rem;
+        /* 157.143% */
 
-        display: inline-flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 19%;
-        
+
+
+        @include mobile {
+            width: 49%;
+            // flex-direction: column;
+        }
+
+        @include desktop {
+            width: 19%;
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        &--modified {
+            padding-left: 2rem;
+        }
 
         &--column {
             flex-direction: column;
@@ -100,13 +164,43 @@
         flex-shrink: 0;
     }
 
+    &__content-list-images-container {
+        display: flex;
+        // flex-direction: column;
+    }
+
     &__content-list-images {
         height: 24px;
         width: 24px;
         flex-shrink: 0;
-    
+
+        @include mobile {
+            display: inline-flex;
+        }
+
         &--left {
-            margin-right: 1rem;
+
+            @include mobile {
+                justify-content: flex-start;
+                align-items: center;
+                width: 49%;
+            }
+
+            @include desktop {
+                margin-right: 1rem;
+            }
+        }
+
+        &--right {
+            @include mobile {
+                justify-content: flex-end;
+                align-items: center;
+                width: 49%;
+            }
+
+            @include desktop {
+                margin-right: 1rem;
+            }
         }
     }
 }
