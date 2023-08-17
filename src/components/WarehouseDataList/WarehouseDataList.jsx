@@ -16,20 +16,17 @@ function WarehouseDataList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
   const [warehouseData, setWarehouseData] = useState([]);
-  const [modalTitle, setModalTitle] = useState("Delete Warehouse?");
   const [city, setCity] = useState('')
 
   const openModal = (warehouse) => {
     setSelectedWarehouse(warehouse);
-    setCity(warehouse.city)
-    setModalTitle(`Delete ${warehouse.city} Warehouse?`)
+    setCity(warehouse.warehouse_name)
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setSelectedWarehouse(null)
     setIsModalOpen(false);
-    setModalTitle("Delete Warehouse?");
   };
 
   const handleDelete = () => {
@@ -148,9 +145,12 @@ function WarehouseDataList() {
           );
         })}
       </ul>
+
+
+
+
       {selectedWarehouse && (
         <Modal
-          title={modalTitle}
           isOpen={isModalOpen}
           onClose={closeModal}
           onDelete={handleDelete}
