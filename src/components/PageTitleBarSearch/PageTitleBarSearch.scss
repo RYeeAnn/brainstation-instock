@@ -35,7 +35,7 @@
         @include tablet {
             margin-bottom: 0;
             margin-top: 0;
-            height: 2rem;
+            height: 2.2rem;
             width: 15rem;
             margin-left: 0;
         }
@@ -62,8 +62,8 @@
         border: 1px $Cloud solid;
 
         @include tablet {
-            max-height: 2rem;
-            // width: 25%;
+            max-height: 2.2rem;
+            width: 12rem;
             border-radius: 20px;
             // margin-left: 0;
             margin-right: 2rem;
