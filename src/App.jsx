@@ -13,11 +13,13 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <Header />
+      <div className="App__pageCard">
       <Routes>
           <Route path="/warehouses" element={ < WarehousesPage /> } />
           <Route path="/warehouses/:warehouseID" element={ < WarehousePage /> } />
           <Route path="/inventory" element={ < InventoryPage /> } />
       </Routes>
+      </div>
       <Footer />
     </div>
     </BrowserRouter>
