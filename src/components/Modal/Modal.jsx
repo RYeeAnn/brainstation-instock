@@ -16,8 +16,9 @@ function Modal({ isOpen, onClose, onDelete, city }) {
         <div className="modal-body">
           <div className="modal-text">
             <p>
-              Please confirm that you'd like to delete the {city} from
-              the list of warehouses. You won't be able to undo this action.
+              Please confirm that you'd like to delete the {city} warehouse
+              from the list of warehouses. You won't be able to undo this
+              action.
             </p>
           </div>
 

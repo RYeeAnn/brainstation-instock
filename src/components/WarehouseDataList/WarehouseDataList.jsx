@@ -101,64 +101,100 @@ function WarehouseDataList() {
           </div>
         </li>
 
-        {warehouseData.map((warehouse) => {
-          return (
-            <li
-              key={warehouse.id}
-              className="warehouse-data-list__content-list"
-            >
-              <div className="warehouse-data-list__content-list-items">
-                <NavLink
-                  to={`/warehouses/${warehouse.id}`}
-                  className="warehouse-data-list__content-warehouse"
-                >
-                  {warehouse.warehouse_name}
-                </NavLink>
-                <img
-                  className="warehouse-data-list__content-warehouse-chevron"
-                  src={ChevronIcon}
-                  alt="chevron icon"
-                />
-              </div>
-              <p className="warehouse-data-list__content-list-items">
-                {warehouse.address}, {warehouse.city}, {warehouse.country}
-              </p>
-              <p className="warehouse-data-list__content-list-items">
-                {warehouse.contact_name}
-              </p>
-              <div className="warehouse-data-list__content-list-items warehouse-data-list__content-list-items--column">
-                <p>{warehouse.contact_phone}</p>
-                <p>{warehouse.contact_email}</p>
-              </div>
-              <div className="warehouse-data-list__content-list-items">
-                <img
-                  onClick={() => openModal(warehouse)}
-                  className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--left"
-                  src={DeleteIcon}
-                />
-                <img
-                  className="warehouse-data-list__content-list-images"
-                  src={EditIcon}
-                />
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+                {warehouseData.map((warehouse) => {
+                    return (
+                        <li
+                            key={warehouse.id}
+                            className="warehouse-data-list__content-list"
+                        >
+                            <div className="warehouse-data-list__content-list-div">
+                                <div className="warehouse-data-list__content-list-wrapper warehouse-data-list__content-list-wrapper--left ">
+                                    <div className="warehouse-data-list__content-list-items">
+                                        {/* <div className="warehouse-data-list__content-list-items-value"> */}
+
+                                        <p className="warehouse-data-list__header-list-items warehouse-data-list__header-list-items--column">WAREHOUSE</p>
+
+                                    <div className="warehouse-data-list__header-list-warehouse">
+
+                                        <NavLink
+                                            to={`/warehouses/${warehouse.id}`}
+                                            className="warehouse-data-list__content-warehouse"
+                                        >
+                                            {warehouse.warehouse_name}
+                                        </NavLink>
+                                        {/* </div> */}
+                                        {/* <div className="warehouse-data-list__content-list-items-value"> */}
+                                        <img
+                                            className="warehouse-data-list__content-warehouse-chevron"
+                                            src={ChevronIcon}
+                                            alt="chevron icon"
+                                        />
+                                        {/* </div> */}
+                                        </div>
+                                    </div>
+                                    <div className="warehouse-data-list__content-list-items-value">
+                                        <p className="warehouse-data-list__header-list-items warehouse-data-list__header-list-items--column">ADDRESS</p>
+                                        <p className="warehouse-data-list__content-list-items">
+                                            {warehouse.address}, {warehouse.city}, {warehouse.country}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div className="warehouse-data-list_content-list-wrapper warehouse-data-list__content-list-wrapper--right">
+
+                                    <p className="warehouse-data-list__header-list-items warehouse-data-list__header-list-items--column">
+                                        CONTACT NAME
+                                    </p>
+
+                                    <p className="warehouse-data-list__content-list-items warehouse-data-list__content-list-items--modified">
+                                        {warehouse.contact_name}
+                                    </p>
+                                    <div className="warehouse-data-list__content-list-items warehouse-data-list__content-list-items--column">
+                                        <p className="warehouse-data-list__header-list-items warehouse-data-list__header-list-items--column">
+                                            CONTACT INFORMATION
+                                        </p>
+                                        <p>{warehouse.contact_phone}</p>
+                                        <p>{warehouse.contact_email}</p>
+                                    </div>
+
+                                </div>
 
 
-
-
-      {selectedWarehouse && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          onDelete={handleDelete}
-          city={city}
-        />
-      )}
-    </section>
-  );
+                            </div>
+                            <div className="warehouse-data-list__content-list-images-container">
+                                {/* <div className="warehouse-data-list__content-list-items"> */}
+                                <div className="warehouse-data-list__content-list-delete-container">
+                                    <img
+                                        onClick={() => openModal(warehouse)}
+                                        className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--left"
+                                        src={DeleteIcon}
+                                    />
+                                </div>
+                                <div className="warehouse-data-list__content-list-edit-container">
+                                    <img
+                                        className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--right"
+                                        src={EditIcon}
+                                    />
+                                </div>
+                                {/* </div> */}
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+            {
+                selectedWarehouse && (
+                    <Modal 
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                    onDelete={handleDelete}
+                    city={city}
+                    />
+                )
+            }
+        </section>
+    );
 }
 
 export default WarehouseDataList;
