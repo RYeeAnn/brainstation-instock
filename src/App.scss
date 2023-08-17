@@ -10,6 +10,27 @@
 
 .App {
   font-family: "Titillium Web";
+
+  &__pageCard {
+    width: 93%;
+    margin: auto;
+    position: relative;
+    top: -5rem;
+    z-index: 7;
+    background-color: white;
+    border-radius: 3px;
+
+    @include tablet {
+      width: 94%;
+      top: -6rem;
+    }
+
+    @include desktop {
+      width: 82%;
+      top: -7rem;
+    }
+  }
+
 }
 
 h1 {
