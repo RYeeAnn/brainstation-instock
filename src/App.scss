@@ -1,3 +1,6 @@
+@use './styles/partials/mixins' as *;
+@use './styles/partials/variables' as *;
+
 * {
   margin: 0;
   padding: 0;
