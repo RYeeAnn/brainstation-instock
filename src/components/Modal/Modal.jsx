@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modal.scss";
 
-function Modal({ title, isOpen, onClose }) {
+function Modal({ title, isOpen, onClose, onDelete, warehouse }) {
   if (!isOpen) return null;
 
   return (
@@ -24,7 +24,9 @@ function Modal({ title, isOpen, onClose }) {
 
           <div className="modal-buttons">
             <button className="modal-button" onClick={onClose}>Cancel</button>
-            <button className="modal-button modal-button__delete">Delete</button>
+            <button className="modal-button modal-button__delete" onClick={onDelete}>
+                Delete
+            </button>
           </div>
         </div>
       </div>

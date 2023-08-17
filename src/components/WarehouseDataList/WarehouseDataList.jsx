@@ -14,16 +14,32 @@ function WarehouseDataList() {
   // console.log(api_URL);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+  const [warehouseData, setWarehouseData] = useState([]);
 
-  const openModal = () => {
+  const openModal = (warehouse) => {
+    setSelectedWarehouse(warehouse)
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
+    setSelectedWarehouse(null)
     setIsModalOpen(false);
   };
 
-  const [warehouseData, setWarehouseData] = useState([]);
+  const handleDelete = () => {
+    axios
+      .delete(`${api_URL}/${selectedWarehouse.id}`)
+      .then(() => {
+        setWarehouseData((prevData) =>
+          prevData.filter((warehouse) => warehouse.id !== selectedWarehouse.id)
+        );
+        closeModal();
+      })
+      .catch((error) => {
+        console.error("Error deleting warehouse:", error);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -113,7 +129,7 @@ function WarehouseDataList() {
               </div>
               <div className="warehouse-data-list__content-list-items">
                 <img
-                  onClick={openModal}
+                  onClick={() => openModal(warehouse)}
                   className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--left"
                   src={DeleteIcon}
                 />
@@ -133,6 +149,15 @@ function WarehouseDataList() {
           );
         })}
       </ul>
+      {selectedWarehouse && (
+        <Modal
+          title={`Delete Warehouse?`}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          onDelete={handleDelete}
+          warehouse={selectedWarehouse}
+        />
+      )}
     </section>
   );
 }
