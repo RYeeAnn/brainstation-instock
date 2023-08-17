@@ -10,7 +10,8 @@
 
     @include mobile {
         width: 100%;
-        height: 140rem;
+        // height: 140rem;
+        height: 90rem;
     }
 
     @include desktop {

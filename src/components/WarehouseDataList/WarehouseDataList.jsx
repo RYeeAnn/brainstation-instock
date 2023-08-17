@@ -91,21 +91,27 @@ function WarehouseDataList() {
                             <div className="warehouse-data-list__content-list-div">
                                 <div className="warehouse-data-list__content-list-wrapper warehouse-data-list__content-list-wrapper--left ">
                                     <div className="warehouse-data-list__content-list-items">
+                                        {/* <div className="warehouse-data-list__content-list-items-value"> */}
                                         <NavLink
                                             to={`/warehouses/${warehouse.id}`}
                                             className="warehouse-data-list__content-warehouse"
                                         >
                                             {warehouse.warehouse_name}
                                         </NavLink>
+                                        {/* </div> */}
+                                        {/* <div className="warehouse-data-list__content-list-items-value"> */}
                                         <img
                                             className="warehouse-data-list__content-warehouse-chevron"
                                             src={ChevronIcon}
                                             alt="chevron icon"
                                         />
+                                        {/* </div> */}
                                     </div>
+                                        <div className="warehouse-data-list__content-list-items-value">
                                     <p className="warehouse-data-list__content-list-items">
                                         {warehouse.address}, {warehouse.city}, {warehouse.country}
                                     </p>
+                                    </div>
 
                                 </div>
 
@@ -127,6 +133,7 @@ function WarehouseDataList() {
                             </div>
                             <div className="warehouse-data-list__content-list-images-container">
                                 <div className="warehouse-data-list__content-list-items">
+                                    <div className="warehouse-data-list__content-list-delete-container">
                                     <img
                                         onClick={openModal}
                                         className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--left"
@@ -139,10 +146,13 @@ function WarehouseDataList() {
                                             onClose={closeModal}
                                         />
                                     )}
+                                    </div>
+                                    <div className="warehouse-data-list__content-list-edit-container">
                                     <img
                                         className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--right"
                                         src={EditIcon}
                                     />
+                                    </div>
                                 </div>
                             </div>
                         </li>
