@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import WarehouseDataList from "../../components/WarehouseDataList/WarehouseDataList";
-import TitleBar from "../../components/TitleBar/TitleBar";
+import WarehouseTitleBar from "../../components/WarehouseTitleBar/WarehouseTitleBar";
+import "./WarehousesPage.scss";
 
 function WarehousesPage() {
     return (
-        <div>
-        <TitleBar />
+        <div className="warehouses-section">
+        <WarehouseTitleBar />
         <WarehouseDataList />
         </div>
     );
