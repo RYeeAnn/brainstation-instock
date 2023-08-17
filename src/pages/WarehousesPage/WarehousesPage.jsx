@@ -5,13 +5,10 @@ import TitleBar from "../../components/TitleBar/TitleBar";
 
 function WarehousesPage() {
     return (
-        <>
-<<<<<<< HEAD
+        <div>
         <TitleBar />
-=======
->>>>>>> 8188008445b787cf7c5199966acf62458f755146
         <WarehouseDataList />
-        </>
+        </div>
     );
 }
 

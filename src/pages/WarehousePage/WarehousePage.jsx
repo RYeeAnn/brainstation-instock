@@ -4,6 +4,7 @@ import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails
 function WarehousePage() {
   return (
     <WarehouseDetails />
+    
   )
 }
 
