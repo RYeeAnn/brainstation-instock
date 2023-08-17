@@ -16,15 +16,20 @@ function WarehouseDataList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
   const [warehouseData, setWarehouseData] = useState([]);
+  const [modalTitle, setModalTitle] = useState("Delete Warehouse?");
+  const [city, setCity] = useState('')
 
   const openModal = (warehouse) => {
-    setSelectedWarehouse(warehouse)
+    setSelectedWarehouse(warehouse);
+    setCity(warehouse.city)
+    setModalTitle(`Delete ${warehouse.city} Warehouse?`)
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setSelectedWarehouse(null)
     setIsModalOpen(false);
+    setModalTitle("Delete Warehouse?");
   };
 
   const handleDelete = () => {
@@ -42,6 +47,7 @@ function WarehouseDataList() {
   };
 
   useEffect(() => {
+    console.log(selectedWarehouse)
     axios
       .get(api_URL)
       .then((response) => {
@@ -133,13 +139,6 @@ function WarehouseDataList() {
                   className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--left"
                   src={DeleteIcon}
                 />
-                {isModalOpen && (
-                  <Modal
-                    title={`Delete Washington Warehouse?`}
-                    isOpen={isModalOpen}
-                    onClose={closeModal}
-                  />
-                )}
                 <img
                   className="warehouse-data-list__content-list-images"
                   src={EditIcon}
@@ -151,11 +150,11 @@ function WarehouseDataList() {
       </ul>
       {selectedWarehouse && (
         <Modal
-          title={`Delete Warehouse?`}
+          title={modalTitle}
           isOpen={isModalOpen}
           onClose={closeModal}
           onDelete={handleDelete}
-          warehouse={selectedWarehouse}
+          city={city}
         />
       )}
     </section>
