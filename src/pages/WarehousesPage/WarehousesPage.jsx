@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import WarehouseDataList from "../../components/WarehouseDataList/WarehouseDataList";
-import Modal from "../../components/Modal/Modal";
+import TitleBar from "../../components/TitleBar/TitleBar";
 
 function WarehousesPage() {
-  return (
-    <>
-      <WarehouseDataList />
-    </>
-  );
+    return (
+        <div>
+        <TitleBar />
+        <WarehouseDataList />
+        </div>
+    );
 }
 
 export default WarehousesPage;

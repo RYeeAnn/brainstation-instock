@@ -1,3 +1,6 @@
+@use './styles/partials/mixins' as *;
+@use './styles/partials/variables' as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +10,44 @@
 
 .App {
   font-family: "Titillium Web";
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 36px;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 28px;
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+h3 {
+  font-size: 13px;
+  line-height: 20px;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+h4 {
+  font-size: 11px;
+  line-height: 16px;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
