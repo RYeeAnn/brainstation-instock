@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 
 import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import WarehousePage from './pages/WarehousePage/WarehousePage';
+import InventoriesPage from './pages/InventoriesPage/InventoriesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Routes>
           <Route path="/warehouses" element={ < WarehousesPage /> } />
           <Route path="/warehouses/:warehouseID" element={ < WarehousePage /> } />
-          <Route path="/inventory" element={ < InventoryPage /> } />
+          <Route path="/inventory" element={ < InventoriesPage /> } />
+          <Route path="/inventory/:inventoryID" element={ < InventoryPage />} />
       </Routes>
       </div>
       <Footer />
