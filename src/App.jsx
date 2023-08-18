@@ -8,6 +8,7 @@ import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import WarehousePage from './pages/WarehousePage/WarehousePage';
 import InventoriesPage from './pages/InventoriesPage/InventoriesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
+import AddWarehousePage from './pages/AddWarehousePage/AddWarehousePage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <div className="App__pageCard">
       <Routes>
           <Route path="/warehouses" element={ < WarehousesPage /> } />
+          <Route path="/warehouses/addWarehouse" element={ < AddWarehousePage /> } />
           <Route path="/warehouses/:warehouseID" element={ < WarehousePage /> } />
           <Route path="/inventory" element={ < InventoriesPage /> } />
           <Route path="/inventory/:inventoryID" element={ < InventoryPage />} />
