@@ -10,6 +10,7 @@ import InventoriesPage from './pages/InventoriesPage/InventoriesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import AddWarehousePage from './pages/AddWarehousePage/AddWarehousePage';
 import AddInventoryPage from './pages/AddInventoryPage/AddInventoryPage';
+import EditInventoryPage from './pages/EditInventoryPage/EditInventoryPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/inventory" element={ < InventoriesPage /> } />
           <Route path="/inventory/:inventoryID" element={ < InventoryPage />} /> {/* this page is empty */}
           <Route path="/inventory/addInventory" element={ <AddInventoryPage /> } />
+          <Route path="/inventory/editInventory" element={ <EditInventoryPage />} />
       </Routes>
       </div>
       <Footer />

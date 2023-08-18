@@ -186,6 +186,7 @@ function WarehouseDataList() {
             {
                 selectedWarehouse && (
                     <Modal 
+                    calledFromPage="Warehouses"
                     isOpen={isModalOpen}
                     onClose={closeModal}
                     onDelete={handleDelete}

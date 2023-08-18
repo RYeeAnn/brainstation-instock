@@ -4,7 +4,7 @@ import InventoryDetailsForm from "../../components/InventoryDetailsForm/Inventor
 function AddInventoryPage() {
     return (
         <div className="addInventory">
-        <PageTitleBar title='Add New Inventory' edit={false} />
+        <PageTitleBar title='Add New Inventory Item' edit={false} />
         <InventoryDetailsForm />
     </div>
     )
