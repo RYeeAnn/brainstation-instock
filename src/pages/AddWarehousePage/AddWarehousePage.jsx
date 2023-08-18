@@ -8,7 +8,7 @@ function AddWarehousePage() {
   return (
     <div className="addWarehouse">
         <PageTitleBar title='Add New Warehouse' edit={false} />
-        <WarehouseDetailsForm />
+        <WarehouseDetailsForm calledFrom="AddWarehousePage" />
     </div>
   )
 }

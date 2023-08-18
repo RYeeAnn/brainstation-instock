@@ -5,18 +5,19 @@ import SortIcon from "../../assets/Icons/sort-24px.svg";
 import ChevronIcon from "../../assets/Icons/chevron_right-24px.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 // import { useParams } from "react-router-dom";
 
 function WarehouseDataList() {
-  const api_URL = `${process.env.REACT_APP_API_URL}/warehouses`;
-  // console.log(api_URL);
+    const api_URL = `${process.env.REACT_APP_API_URL}/warehouses`;
+    
+    const navigate = useNavigate();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
-  const [warehouseData, setWarehouseData] = useState([]);
-  const [city, setCity] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+    const [warehouseData, setWarehouseData] = useState([]);
+    const [city, setCity] = useState('');
 
   const openModal = (warehouse) => {
     setSelectedWarehouse(warehouse);
@@ -43,18 +44,20 @@ function WarehouseDataList() {
       });
   };
 
-  useEffect(() => {
-    console.log(selectedWarehouse)
-    axios
-      .get(api_URL)
-      .then((response) => {
-        // console.log(response.data);
-        setWarehouseData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+      const handleEditWarehouse = (id) => {
+        navigate(`/warehouses/${id}/edit`)
+      }
+
+    useEffect(() => {
+        axios
+            .get(api_URL)
+            .then((response) => {
+                setWarehouseData(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
   return (
     <section className="warehouse-data-list__section">
@@ -173,6 +176,7 @@ function WarehouseDataList() {
                                 </div>
                                 <div className="warehouse-data-list__content-list-edit-container">
                                     <img
+                                        onClick = {(id) => handleEditWarehouse(warehouse.id)}
                                         className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--right"
                                         src={EditIcon}
                                     />

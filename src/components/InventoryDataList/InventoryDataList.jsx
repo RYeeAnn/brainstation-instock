@@ -151,16 +151,13 @@ function InventoryDataList() {
                     </p>
                   </div>
 
-                  <div className="inventory-data-list__content">
-                    <p className="inventory-data-list__content-items inventory-data-list__content-items--header">
-                      WAREHOUSE
-                    </p>
-                    <p className="inventory-data-list__content-items inventory-data-list__content-items--warehouse">
-                      {inventory.warehouse_id}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                                    <div className="inventory-data-list__content">
+                                        <p className="inventory-data-list__content-items inventory-data-list__content-items--header">WAREHOUSE</p>
+                                        <p className="inventory-data-list__content-items inventory-data-list__content-items--warehouse">{inventory.warehouse_name}</p>
+                                    </div>
+                                </div>
+                            </div>
+
 
               <div className="inventory-data-list__images-container">
                 <div className="inventory-data-list__images-wrapper inventory-data-list__images-wrapper--delete">
@@ -171,7 +168,7 @@ function InventoryDataList() {
                   />
                 </div>
                 <div className="inventory-data-list__images-wrapper inventory-data-list__images-wrapper--edit">
-                  <NavLink to={`/inventory/editInventory/${inventory.id}`}>
+                  <NavLink to={`/inventory/${inventory.id}/edit`}>
                     <img
                       className="inventory-data-list__image inventory-data-list__image--edit"
                       src={EditIcon}

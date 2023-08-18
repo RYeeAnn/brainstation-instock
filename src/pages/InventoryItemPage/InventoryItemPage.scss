@@ -1,0 +1,62 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.inventory-Item-Page {
+    h4 {
+        color: $Slate;
+    }
+}
+
+.inventory-Item {
+
+
+    &__status-quantity-container {
+        display: flex;
+    }
+
+    &__overall-container {
+
+        @include tablet {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    &__description-field-container {
+        margin: 0 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    &__description-section1 {
+        // padding-bottom: 1rem;
+        margin-top: 1rem;
+    
+        @include tablet {
+            border-bottom: none;
+            width: 40%;
+            padding-bottom: 0;
+            margin-top: 0;
+        }
+
+        @include desktop {
+            margin-right: 0;
+        }
+    }
+    
+    &__description-section2 {
+        padding-bottom: 0.5rem;
+    
+        @include tablet {
+            border-left: 1px $Cloud solid;
+            width: 45%;
+            padding-bottom: 0;
+            padding-left: 2rem;
+        }
+
+        @include desktop {
+            width: 50%;
+        }
+    }
+}
