@@ -2,12 +2,19 @@ import './WarehouseDetailsForm.scss'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import validator from 'validator';
+import { useParams } from "react-router-dom";
 
 
-function WarehouseDetailsForm() {
+function WarehouseDetailsForm({calledFrom}) {
 
     let api_url = process.env.REACT_APP_API_URL;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { warehouseID } = useParams();
+
+    if (calledFrom === "EditWarehousePage") {
+        // const id = params.id
+        console.log(warehouseID);
+    }
 
     const validatePhoneNumber = (number) => {
         const isValidPhoneNumber = validator.isMobilePhone(number)
@@ -85,6 +92,7 @@ function WarehouseDetailsForm() {
             <label>Warehouse Name</label>
             <br/>
             <input placeholder="Warehouse Name" className="warehouseDetailsForm__name-input" type="text" name="name" />
+            {/* value={calledFrom === "EditWarehousePage" ? warehouse_name : ""} */}
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Street Address</label>

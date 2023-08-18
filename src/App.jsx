@@ -9,6 +9,7 @@ import WarehousePage from './pages/WarehousePage/WarehousePage';
 import InventoriesPage from './pages/InventoriesPage/InventoriesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import AddWarehousePage from './pages/AddWarehousePage/AddWarehousePage';
+import EditWarehousePage from './pages/EditWarehousePage/EditWarehousePage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
           <Route path="/warehouses" element={ < WarehousesPage /> } />
           <Route path="/warehouses/addWarehouse" element={ < AddWarehousePage /> } />
+          <Route path="/warehouses/editWarehouse/:warehouseID" element={ < EditWarehousePage /> } />
           <Route path="/warehouses/:warehouseID" element={ < WarehousePage /> } />
           <Route path="/inventory" element={ < InventoriesPage /> } />
           <Route path="/inventory/:inventoryID" element={ < InventoryPage />} />

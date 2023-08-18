@@ -132,7 +132,7 @@ function InventoryDataList() {
 
                                     <div className="inventory-data-list__content">
                                         <p className="inventory-data-list__content-items inventory-data-list__content-items--header">WAREHOUSE</p>
-                                        <p className="inventory-data-list__content-items inventory-data-list__content-items--warehouse">{inventory.warehouse_id}</p>
+                                        <p className="inventory-data-list__content-items inventory-data-list__content-items--warehouse">{inventory.warehouse_name}</p>
                                     </div>
                                 </div>
                             </div>

@@ -5,13 +5,15 @@ import SortIcon from "../../assets/Icons/sort-24px.svg";
 import ChevronIcon from "../../assets/Icons/chevron_right-24px.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 // import { useParams } from "react-router-dom";
 
 function WarehouseDataList() {
     const api_URL = `${process.env.REACT_APP_API_URL}/warehouses`;
     
+    const navigate = useNavigate();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedWarehouse, setSelectedWarehouse] = useState(null);
     const [warehouseData, setWarehouseData] = useState([]);
@@ -41,6 +43,10 @@ function WarehouseDataList() {
             console.error("Error deleting warehouse:", error);
           });
       };
+
+      const handleEditWarehouse = (id) => {
+        navigate(`/warehouses/editWarehouse/${id}`)
+      }
 
     useEffect(() => {
         axios
@@ -170,6 +176,7 @@ function WarehouseDataList() {
                                 </div>
                                 <div className="warehouse-data-list__content-list-edit-container">
                                     <img
+                                        onClick = {(id) => handleEditWarehouse(warehouse.id)}
                                         className="warehouse-data-list__content-list-images warehouse-data-list__content-list-images--right"
                                         src={EditIcon}
                                     />
