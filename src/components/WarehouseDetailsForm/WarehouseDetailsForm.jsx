@@ -2,7 +2,7 @@ import './WarehouseDetailsForm.scss'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import validator from 'validator';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 function WarehouseDetailsForm({calledFrom, warehouseID}) {
 
@@ -17,6 +17,8 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
     const[contactPositionInput, setContactPositionInput] = useState("");
     const[contactPhoneInput, setContactPhoneInput] = useState("");
     const[contactEmailInput, setContactEmailInput] = useState("");
+
+    // const warehouseNameRef = useRef(); 
 
     // const [selectedWarehouse, setSelectedWarehouse] = useState([]);
 
@@ -44,12 +46,71 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
         })
     }
     },[])
+    
+    const handleWarehouseNameChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setWarehouseNameInput(event.target.value);
 
-    
-    
-    const handleChange = () => {
-        console.log("Input changed");
+        // console.log(warehouseNameRef.current);
     }
+
+    const handleAddressChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setAddressInput(event.target.value);
+
+        // console.log(warehouseNameRef.current);
+    }
+
+    const handleCityChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setCityInput(event.target.value);
+
+        // console.log(warehouseNameRef.current);
+    }
+
+    const handleCountryChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setCountryInput(event.target.value);
+
+        // console.log(warehouseNameRef.current);
+    }
+
+    const handleContactNameChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setContactNameInput(event.target.value);
+
+        // console.log(warehouseNameRef.current);
+    }
+
+    const handleContactPositionChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setContactPositionInput(event.target.value);
+
+        // console.log(warehouseNameRef.current);
+    }
+
+    const handleContactPhoneChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setContactPhoneInput(event.target.value);
+
+        // console.log(warehouseNameRef.current);
+    }
+
+    const handleContactEmailChange = (event) => {
+        // console.log("Input changed");
+        // console.log(event.target.value);
+        setContactEmailInput(event.target.value);
+
+        // console.log(warehouseNameRef.current);
+    }
+
 
     const validatePhoneNumber = (number) => {
         const isValidPhoneNumber = validator.isMobilePhone(number)
@@ -136,23 +197,23 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             <div className="warehouseDetailsForm__field-container">
             <label>Warehouse Name</label>
             <br/>
-            <input onChange={handleChange} placeholder="Warehouse Name" className="warehouseDetailsForm__name-input" type="text" name="name" value={calledFrom === "EditWarehousePage" ? warehouseNameInput : ""} />
+            <input onChange={(event) => handleWarehouseNameChange(event)} placeholder="Warehouse Name" className="warehouseDetailsForm__name-input" type="text" name="name" value={calledFrom === "EditWarehousePage" ? warehouseNameInput : ""} />
             {/* selectedWarehouse[0]?. */}
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Street Address</label>
             <br/>
-            <input placeholder="Street Address" className="warehouseDetailsForm__address-input" type="text" name="address" value={calledFrom === "EditWarehousePage" ? addressInput : ""}  />
+            <input onChange={(event) => handleAddressChange(event)} placeholder="Street Address" className="warehouseDetailsForm__address-input" type="text" name="address" value={calledFrom === "EditWarehousePage" ? addressInput : ""}  />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>City</label>
             <br/>
-            <input placeholder="City" className="warehouseDetailsForm__address-input" type="text" name="city" value={calledFrom === "EditWarehousePage" ? cityInput : ""} />
+            <input onChange={(event) => handleCityChange(event)} placeholder="City" className="warehouseDetailsForm__address-input" type="text" name="city" value={calledFrom === "EditWarehousePage" ? cityInput : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Country</label>
             <br/>
-            <input placeholder="Country" className="warehouseDetailsForm__country-input" type="text" name="country" value={calledFrom === "EditWarehousePage" ? countryInput : ""} />
+            <input onChange={(event) => handleCountryChange(event)} placeholder="Country" className="warehouseDetailsForm__country-input" type="text" name="country" value={calledFrom === "EditWarehousePage" ? countryInput : ""} />
             </div>
         </div>
 
@@ -161,22 +222,22 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             <div className="warehouseDetailsForm__field-container">
             <label>Contact Name</label>
             <br/>
-            <input placeholder="Contact Name" className="warehouseDetailsForm__contact-name-input" type="text" name="contactName" value={calledFrom === "EditWarehousePage" ? contactNameInput : ""} />
+            <input onChange={(event) => handleContactNameChange(event)} placeholder="Contact Name" className="warehouseDetailsForm__contact-name-input" type="text" name="contactName" value={calledFrom === "EditWarehousePage" ? contactNameInput : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Position</label>
             <br/>
-            <input placeholder="Position" className="warehouseDetailsForm__position-input" type="text" name="position" value={calledFrom === "EditWarehousePage" ? contactPositionInput : ""} />
+            <input onChange={(event) => handleContactPositionChange(event)} placeholder="Position" className="warehouseDetailsForm__position-input" type="text" name="position" value={calledFrom === "EditWarehousePage" ? contactPositionInput : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Phone Number</label>
             <br/>
-            <input placeholder="Phone Number" className="warehouseDetailsForm__phone-number-input" type="text" name="phoneNumber" value={calledFrom === "EditWarehousePage" ? contactPhoneInput : ""} />
+            <input onChange={(event) => handleContactPhoneChange(event)} placeholder="Phone Number" className="warehouseDetailsForm__phone-number-input" type="text" name="phoneNumber" value={calledFrom === "EditWarehousePage" ? contactPhoneInput : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Email</label>
             <br/>
-            <input placeholder="Email" className="warehouseDetailsForm__email-input" type="text" name="email" value={calledFrom === "EditWarehousePage" ? contactEmailInput : ""} />
+            <input onChange={(event) => handleContactEmailChange(event)} placeholder="Email" className="warehouseDetailsForm__email-input" type="text" name="email" value={calledFrom === "EditWarehousePage" ? contactEmailInput : ""} />
             </div>
             </div>
             
