@@ -45,7 +45,7 @@ function WarehouseDataList() {
       };
 
       const handleEditWarehouse = (id) => {
-        navigate(`/warehouses/editWarehouse/${id}`)
+        navigate(`/warehouses/${id}/edit`)
       }
 
     useEffect(() => {
