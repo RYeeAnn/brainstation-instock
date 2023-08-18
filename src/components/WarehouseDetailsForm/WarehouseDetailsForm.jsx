@@ -53,35 +53,45 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
 
         if (!event.target.name.value) {
             alert('Error: Warehouse Name Required');
+            return
         }
         if (!event.target.address.value) {
             alert('Error: Address Required');
+            return
         }
         if (!event.target.city.value) {
             alert('Error: City Required');
+            return
         }
         if (!event.target.country.value) {
             alert('Error: Country Required');
+            return
         }
 
         if (!event.target.contactName.value) {
             alert('Error: Contact Name Required');
+            return
         }
         if (!event.target.position.value) {
             alert('Error: Position Required');
+            return
         }
         if (!event.target.phoneNumber.value) {
             alert('Error: Phone Number Required');
+            return
         }
         if (!validatePhoneNumber(event.target.phoneNumber.value)) {
             alert('Error: Please Enter a Valid Phone Number');
+            return
         }
         if (!event.target.email.value) {
             alert('Error: Email Required');
+            return
         }
 
         if (!validateEmail(event.target.email.value)) {
             alert('Error: Please Enter a Valid Email Address');
+            return
         }
 
         let responseObject = {
