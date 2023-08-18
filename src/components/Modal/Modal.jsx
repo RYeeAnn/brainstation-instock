@@ -32,8 +32,15 @@ function Modal({ calledFromPage, isOpen, onClose, onDelete, city, item }) {
           </div>
 
           <div className="modal-buttons">
-            <button className="modal-button" onClick={onClose}>Cancel</button>
-            <button className="modal-button modal-button__delete" onClick={onDelete}>Delete</button>
+            <button className="modal-button" onClick={onClose}>
+              Cancel
+            </button>
+            <button
+              className="modal-button modal-button__delete"
+              onClick={onDelete}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>

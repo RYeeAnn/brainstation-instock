@@ -19,30 +19,30 @@ function WarehouseDataList() {
     const [warehouseData, setWarehouseData] = useState([]);
     const [city, setCity] = useState('');
 
-    const openModal = (warehouse) => {
-        setSelectedWarehouse(warehouse);
-        setCity(warehouse.warehouse_name);
-        setIsModalOpen(true);
-    };
+  const openModal = (warehouse) => {
+    setSelectedWarehouse(warehouse);
+    setCity(warehouse.warehouse_name)
+    setIsModalOpen(true);
+  };
 
-    const closeModal = () => {
-        setSelectedWarehouse(null);
-        setIsModalOpen(false);
-    };
+  const closeModal = () => {
+    setSelectedWarehouse(null)
+    setIsModalOpen(false);
+  };
 
-    const handleDelete = () => {
-        axios
-          .delete(`${api_URL}/${selectedWarehouse.id}`)
-          .then(() => {
-            setWarehouseData((prevData) =>
-              prevData.filter((warehouse) => warehouse.id !== selectedWarehouse.id)
-            );
-            closeModal();
-          })
-          .catch((error) => {
-            console.error("Error deleting warehouse:", error);
-          });
-      };
+  const handleDelete = () => {
+    axios
+      .delete(`${api_URL}/${selectedWarehouse.id}`)
+      .then(() => {
+        setWarehouseData((prevData) =>
+          prevData.filter((warehouse) => warehouse.id !== selectedWarehouse.id)
+        );
+        closeModal();
+      })
+      .catch((error) => {
+        console.error("Error deleting warehouse:", error);
+      });
+  };
 
       const handleEditWarehouse = (id) => {
         navigate(`/warehouses/${id}/edit`)
@@ -59,50 +59,50 @@ function WarehouseDataList() {
             });
     }, []);
 
-    return (
-        <section className="warehouse-data-list__section">
-            <ul className="warehouse-data-list__header-unordered-list">
-                <li className="warehouse-data-list__header-list">
-                    <div className="warehouse-data-list__header">
-                        <p className="warehouse-data-list__header-list-items">WAREHOUSE</p>
-                        <img
-                            className="warehouse-data-list__header-sort"
-                            src={SortIcon}
-                            alt="sort icon"
-                        />
-                    </div>
-                    <div className="warehouse-data-list__header">
-                        <p className="warehouse-data-list__header-list-items">ADDRESS</p>
-                        <img
-                            className="warehouse-data-list__header-sort"
-                            src={SortIcon}
-                            alt="sort icon"
-                        />
-                    </div>
-                    <div className="warehouse-data-list__header">
-                        <p className="warehouse-data-list__header-list-items warehouse-data-list__header-list-items--modified">
-                            CONTACT NAME
-                        </p>
-                        <img
-                            className="warehouse-data-list__header-sort"
-                            src={SortIcon}
-                            alt="sort icon"
-                        />
-                    </div>
-                    <div className="warehouse-data-list__header">
-                        <p className="warehouse-data-list__header-list-items">
-                            CONTACT INFORMATION
-                        </p>
-                        <img
-                            className="warehouse-data-list__header-sort"
-                            src={SortIcon}
-                            alt="sort icon"
-                        />
-                    </div>
-                    <div className="warehouse-data-list__header">
-                        <p className="warehouse-data-list__header-list-items">ACTIONS</p>
-                    </div>
-                </li>
+  return (
+    <section className="warehouse-data-list__section">
+      <ul className="warehouse-data-list__header-unordered-list">
+        <li className="warehouse-data-list__header-list">
+          <div className="warehouse-data-list__header">
+            <p className="warehouse-data-list__header-list-items">WAREHOUSE</p>
+            <img
+              className="warehouse-data-list__header-sort"
+              src={SortIcon}
+              alt="sort icon"
+            />
+          </div>
+          <div className="warehouse-data-list__header">
+            <p className="warehouse-data-list__header-list-items">ADDRESS</p>
+            <img
+              className="warehouse-data-list__header-sort"
+              src={SortIcon}
+              alt="sort icon"
+            />
+          </div>
+          <div className="warehouse-data-list__header">
+            <p className="warehouse-data-list__header-list-items">
+              CONTACT NAME
+            </p>
+            <img
+              className="warehouse-data-list__header-sort"
+              src={SortIcon}
+              alt="sort icon"
+            />
+          </div>
+          <div className="warehouse-data-list__header">
+            <p className="warehouse-data-list__header-list-items">
+              CONTACT INFORMATION
+            </p>
+            <img
+              className="warehouse-data-list__header-sort"
+              src={SortIcon}
+              alt="sort icon"
+            />
+          </div>
+          <div className="warehouse-data-list__header">
+            <p className="warehouse-data-list__header-list-items">ACTIONS</p>
+          </div>
+        </li>
 
                 {warehouseData.map((warehouse) => {
                     return (

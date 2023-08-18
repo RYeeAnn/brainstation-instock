@@ -12,6 +12,8 @@ import AddWarehousePage from './pages/AddWarehousePage/AddWarehousePage';
 import InventoryItemPage from './pages/InventoryItemPage/InventoryItemPage';
 import EditItemPage from './pages/EditItemPage/EditItemPage';
 import EditWarehousePage from './pages/EditWarehousePage/EditWarehousePage';
+import InventoryEditForm from './components/InventoryEditForm/InventoryEditForm';
+import AddInventoryPage from './pages/AddInventoryPage/AddInventoryPage';
 
 function App() {
   return (
@@ -26,9 +28,9 @@ function App() {
           <Route path="/warehouses/:warehouseID/edit" element={ < EditWarehousePage /> } />
           
           <Route path="/inventory" element={ < InventoriesPage /> } />
-          {/* <Route path="/inventory/addItem" element={ < AddItemPage /> } /> */}
+          <Route path="/inventory/addInventory" element={ < AddInventoryPage /> } />
           <Route path="/inventory/:itemID" element={ < InventoryItemPage />} />
-          <Route path="/inventory/:itemID/edit" element={ < EditItemPage /> } />
+          <Route path="/inventory/:itemID/edit" element={ < InventoryEditForm /> } />
 
       </Routes>
       </div>
