@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "./InventoryEditForm.scss";
 
-function InventoryEditForm() {
+function InventoryEditForm({inventoryID}) {
   const navigate = useNavigate();
   const [status, setStatus] = useState("");
   const [itemName, setItemName] = useState("");
@@ -15,12 +16,32 @@ function InventoryEditForm() {
   const [categoryError, setCategoryError] = useState("");
   const [warehouseError, setWarehouseError] = useState("");
 
+  useEffect(() => {
+
+    // Fetch inventory data using inventoryID?
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/inventories/${inventoryID}`)
+      .then((response) => {
+        const inventoryData = response.data;
+        setItemName(inventoryData.item_name);
+        setDescription(inventoryData.description);
+        setCategory(inventoryData.category);
+        setStatus(inventoryData.status);
+        setWarehouse(inventoryData.warehouse_id);
+      })
+      .catch((error) => {
+        console.error("Error fetching inventory details:", error);
+      });
+  }, [inventoryID]);
+
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    
     
     let valid = true;
     
