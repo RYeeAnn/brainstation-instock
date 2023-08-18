@@ -205,6 +205,11 @@
         align-items: center;
     }
 
+    &__inventoryItem-name {
+        color: #2E66E5;
+        text-decoration: none;
+    }
+
     &__images-container {
 
         @include mobile {

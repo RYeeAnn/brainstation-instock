@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Modal from "../../components/Modal/Modal";
 
-
 function InventoryDataList() {
 
     const api_URL = `${process.env.REACT_APP_API_URL}/inventories`;
@@ -48,7 +47,6 @@ function InventoryDataList() {
         axios
             .get(api_URL)
             .then((response) => {
-                // console.log(response.data);
                 setInventoryData(response.data);
             })
             .catch((error) => {
@@ -102,8 +100,8 @@ function InventoryDataList() {
                                         <p className="inventory-data-list__content-items inventory-data-list__content-items--header">INVENTORY ITEM</p>
                                         <div className="inventory-data-list__content-items">
                                             <div className="inventory-data-list__inventoryItem-container">
-                                                <NavLink to="/inventory">
-                                                    {inventory.item_name}
+                                                <NavLink to={`/inventory/${inventory.id}`} className="inventory-data-list__inventoryItem-name">
+                                                   {inventory.item_name}
                                                 </NavLink>
                                                 <img src={ChevronIcon} alt="chevron icon" />
                                             </div>
