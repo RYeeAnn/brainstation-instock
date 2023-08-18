@@ -11,8 +11,7 @@ import Modal from "../../components/Modal/Modal";
 
 function WarehouseDataList() {
     const api_URL = `${process.env.REACT_APP_API_URL}/warehouses`;
-    // console.log(api_URL);
-
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedWarehouse, setSelectedWarehouse] = useState(null);
     const [warehouseData, setWarehouseData] = useState([]);
@@ -47,7 +46,6 @@ function WarehouseDataList() {
         axios
             .get(api_URL)
             .then((response) => {
-                // console.log(response.data);
                 setWarehouseData(response.data);
             })
             .catch((error) => {
@@ -185,6 +183,7 @@ function WarehouseDataList() {
             {
                 selectedWarehouse && (
                     <Modal 
+                    calledFromPage="Warehouses"
                     isOpen={isModalOpen}
                     onClose={closeModal}
                     onDelete={handleDelete}
