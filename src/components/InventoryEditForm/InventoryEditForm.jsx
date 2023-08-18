@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import "./InventoryEditForm.scss";
 
-function InventoryEditForm({inventoryID}) {
+function InventoryEditForm() {
   const navigate = useNavigate();
+  const params = useParams();
   const [status, setStatus] = useState("");
   const [itemName, setItemName] = useState("");
   const [description, setDescription] = useState("");
@@ -20,7 +21,7 @@ function InventoryEditForm({inventoryID}) {
 
     // Fetch inventory data using inventoryID?
     axios
-      .get(`${process.env.REACT_APP_API_URL}/inventories/${inventoryID}`)
+      .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
       .then((response) => {
         const inventoryData = response.data;
         setItemName(inventoryData.item_name);
@@ -32,7 +33,7 @@ function InventoryEditForm({inventoryID}) {
       .catch((error) => {
         console.error("Error fetching inventory details:", error);
       });
-  }, [inventoryID]);
+  }, [params.itemID]);
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
