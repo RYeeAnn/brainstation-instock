@@ -11,6 +11,7 @@ import InventoryPage from './pages/InventoryPage/InventoryPage';
 import AddWarehousePage from './pages/AddWarehousePage/AddWarehousePage';
 import InventoryItemPage from './pages/InventoryItemPage/InventoryItemPage';
 import EditItemPage from './pages/EditItemPage/EditItemPage';
+import EditWarehousePage from './pages/EditWarehousePage/EditWarehousePage';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/warehouses" element={ < WarehousesPage /> } />
           <Route path="/warehouses/addWarehouse" element={ < AddWarehousePage /> } />
           <Route path="/warehouses/:warehouseID" element={ < WarehousePage /> } />
-          {/* <Route path="/warehouses/:warehouseID/edit" element={ < EditWarehousePage /> } /> */}
+          <Route path="/warehouses/:warehouseID/edit" element={ < EditWarehousePage /> } />
           
           <Route path="/inventory" element={ < InventoriesPage /> } />
           {/* <Route path="/inventory/addItem" element={ < AddItemPage /> } /> */}

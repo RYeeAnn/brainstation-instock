@@ -2,13 +2,42 @@ import './WarehouseDetailsForm.scss'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import validator from 'validator';
+// import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
-
-function WarehouseDetailsForm() {
+function WarehouseDetailsForm({calledFrom, warehouseID}) {
 
     let api_url = process.env.REACT_APP_API_URL;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    // const { warehouseID } = useParams();
 
+    // console.log(calledFrom);
+
+    const [selectedWarehouse, setSelectedWarehouse] = useState([]);
+
+    if (calledFrom === "AddWarehousePage") {
+        warehouseID = null;
+    }
+
+    // if (calledFrom === "EditWarehousePage") {
+        // const id = params.id
+        // console.log(warehouseID);
+    // }
+
+    useEffect(() => {
+    if (calledFrom === "EditWarehousePage") {
+        // console.log(warehouseID);
+        axios.get(`${api_url}/warehouses/${warehouseID}`)
+        .then((response) => {
+            // console.log(response.data);
+            setSelectedWarehouse(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+    },[])
+    
     const validatePhoneNumber = (number) => {
         const isValidPhoneNumber = validator.isMobilePhone(number)
         return (isValidPhoneNumber);
@@ -86,6 +115,9 @@ function WarehouseDetailsForm() {
         })
     }
 
+    // console.log(warehouseID);
+    // console.log(selectedWarehouse);
+
   return (
     <form onSubmit={handleSubmit} className="warehouseDetailsForm">
         <div className="warehouseDetailsForm__overall-container">
@@ -94,22 +126,22 @@ function WarehouseDetailsForm() {
             <div className="warehouseDetailsForm__field-container">
             <label>Warehouse Name</label>
             <br/>
-            <input placeholder="Warehouse Name" className="warehouseDetailsForm__name-input" type="text" name="name" />
+            <input placeholder="Warehouse Name" className="warehouseDetailsForm__name-input" type="text" name="name" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.warehouse_name : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Street Address</label>
             <br/>
-            <input placeholder="Street Address" className="warehouseDetailsForm__address-input" type="text" name="address" />
+            <input placeholder="Street Address" className="warehouseDetailsForm__address-input" type="text" name="address" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.address : ""}  />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>City</label>
             <br/>
-            <input placeholder="City" className="warehouseDetailsForm__address-input" type="text" name="city" />
+            <input placeholder="City" className="warehouseDetailsForm__address-input" type="text" name="city" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.city : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Country</label>
             <br/>
-            <input placeholder="Country" className="warehouseDetailsForm__country-input" type="text" name="country" />
+            <input placeholder="Country" className="warehouseDetailsForm__country-input" type="text" name="country" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.country : ""} />
             </div>
         </div>
 
@@ -118,22 +150,22 @@ function WarehouseDetailsForm() {
             <div className="warehouseDetailsForm__field-container">
             <label>Contact Name</label>
             <br/>
-            <input placeholder="Contact Name" className="warehouseDetailsForm__contact-name-input" type="text" name="contactName" />
+            <input placeholder="Contact Name" className="warehouseDetailsForm__contact-name-input" type="text" name="contactName" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.contact_name : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Position</label>
             <br/>
-            <input placeholder="Position" className="warehouseDetailsForm__position-input" type="text" name="position" />
+            <input placeholder="Position" className="warehouseDetailsForm__position-input" type="text" name="position" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.contact_position : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Phone Number</label>
             <br/>
-            <input placeholder="Phone Number" className="warehouseDetailsForm__phone-number-input" type="text" name="phoneNumber" />
+            <input placeholder="Phone Number" className="warehouseDetailsForm__phone-number-input" type="text" name="phoneNumber" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.contact_phone : ""} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Email</label>
             <br/>
-            <input placeholder="Email" className="warehouseDetailsForm__email-input" type="text" name="email" />
+            <input placeholder="Email" className="warehouseDetailsForm__email-input" type="text" name="email" value={calledFrom === "EditWarehousePage" ? selectedWarehouse[0]?.contact_email : ""} />
             </div>
             </div>
             
