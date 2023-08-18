@@ -5,11 +5,43 @@ import EditIcon from "../../assets/Icons/edit-24px.svg";
 import ChevronIcon from "../../assets/Icons/chevron_right-24px.svg"
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Modal from "../../components/Modal/Modal";
+
 
 function InventoryDataList() {
 
     const api_URL = `${process.env.REACT_APP_API_URL}/inventories`;
+
     const [inventoryData, setInventoryData] = useState([]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedInventory, setSelectedInventory] = useState(null);
+    const [item, setItem] = useState('');
+
+    const openModal = (inventory) => {
+        setSelectedInventory(inventory);
+        setItem(inventory.item_name);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setSelectedInventory(null);
+        setIsModalOpen(false);
+    };
+
+    const handleDelete = () => {
+        axios
+          .delete(`${api_URL}/${selectedInventory.id}`)
+          .then(() => {
+            setInventoryData((prevData) =>
+              prevData.filter((inventory) => inventory.id !== selectedInventory.id)
+            );
+            closeModal();
+          })
+          .catch((error) => {
+            console.error("Error deleting item:", error);
+          });
+      };
 
     useEffect(() => {
         axios
@@ -141,7 +173,8 @@ function InventoryDataList() {
 
                             <div className="inventory-data-list__images-container">
                                 <div className="inventory-data-list__images-wrapper inventory-data-list__images-wrapper--delete">
-                                    <img className="inventory-data-list__image inventory-data-list__image--delete" src={DeleteIcon} />
+                                    <img  onClick={() => openModal(inventory)}
+                                    className="inventory-data-list__image inventory-data-list__image--delete" src={DeleteIcon} />
                                 </div>
                                 <div className="inventory-data-list__images-wrapper inventory-data-list__images-wrapper--edit">
                                     <img className="inventory-data-list__image inventory-data-list__image--edit" src={EditIcon} />
@@ -158,6 +191,17 @@ function InventoryDataList() {
 
 
             </ul>
+            {
+                selectedInventory && (
+                    <Modal 
+                    calledFromPage="Inventories"
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                    onDelete={handleDelete}
+                    item={item}
+                    />
+                )
+            }
         </div>
     );
 }
