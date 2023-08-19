@@ -48,7 +48,6 @@ function InventoryItemPage() {
                     </div>
                 </div>
             </div>
-            <InventoryEditForm itemData={itemData} />
         </div>
     );
 }
