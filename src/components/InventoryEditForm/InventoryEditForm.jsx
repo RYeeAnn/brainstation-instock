@@ -11,11 +11,16 @@ function InventoryEditForm() {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [warehouse, setWarehouse] = useState("");
+  const [warehouseList, setWarehouseList] = useState([]);
   
   const [itemNameError, setItemNameError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
   const [categoryError, setCategoryError] = useState("");
   const [warehouseError, setWarehouseError] = useState("");
+
+  const categories = [
+    'Electronics', 'Gear','Apparel', 'Accessories','Health','Gear'
+  ];
 
   useEffect(() => {
 
@@ -24,6 +29,7 @@ function InventoryEditForm() {
       .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
       .then((response) => {
         const inventoryData = response.data;
+        console.log('inventoryData', inventoryData)
         setItemName(inventoryData.item_name);
         setDescription(inventoryData.description);
         setCategory(inventoryData.category);
@@ -33,7 +39,15 @@ function InventoryEditForm() {
       .catch((error) => {
         console.error("Error fetching inventory details:", error);
       });
-  }, [params.itemID]);
+
+
+      axios.get(`${process.env.REACT_APP_API_URL}/warehouses/`).then(response=>{
+        setWarehouseList(response.data);
+      }).catch(err => console.error(err))
+
+  }, [params]);
+
+
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
@@ -119,10 +133,10 @@ function InventoryEditForm() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="">Please Select</option>
-              <option value="category1">Category 1</option>
-              <option value="category2">Category 2</option>
-              <option value="category3">Category 3</option>
+                {categories.map((categoryElement,index) => (
+                    <option key={index} value={categoryElement}>{categoryElement}</option>
+                ))}
+
             </select>
             <div className="error-message">{categoryError}</div>
           </div>
@@ -138,8 +152,9 @@ function InventoryEditForm() {
                 value="In Stock"
                 id="inStock"
                 onChange={handleStatusChange}
-              />
-              <label htmlFor="inStock" className="radio-instock">
+                checked={status === 'In Stock' && true}
+              /> 
+              <label className="radio-instock">
                 In Stock
               </label>
 
@@ -149,8 +164,9 @@ function InventoryEditForm() {
                 value="Out of Stock"
                 id="outOfStock"
                 onChange={handleStatusChange}
+                checked={status === 'Out of Stock' && true}
               />
-              <label htmlFor="outOfStock" className="radio-outofstock">
+              <label className="radio-outofstock">
                 Out of Stock
               </label>
             </div>
@@ -164,10 +180,7 @@ function InventoryEditForm() {
               value={warehouse}
               onChange={(e) => setWarehouse(e.target.value)}
             >
-              <option value="">Please Select</option>
-              <option value="warehouse1">Warehouse 1</option>
-              <option value="warehouse2">Warehouse 2</option>
-              <option value="warehouse3">Warehouse 3</option>
+                {warehouseList.map(warehouse=> <option key={  warehouse.id} value={warehouse.warehouse_name}>{warehouse.warehouse_name}</option>)}
             </select>
             <div className="error-message">{warehouseError}</div>
           </div>

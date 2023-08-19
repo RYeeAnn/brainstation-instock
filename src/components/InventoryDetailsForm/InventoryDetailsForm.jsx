@@ -1,21 +1,62 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import "./InventoryDetailsForm.scss";
 
 function InventoryDetailsForm() {
   const navigate = useNavigate();
+  const params = useParams();
   const [status, setStatus] = useState("");
   const [itemName, setItemName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [warehouse, setWarehouse] = useState("");
-  
+  const [warehouseList, setWarehouseList] = useState([]);
+
   const [itemNameError, setItemNameError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
   const [categoryError, setCategoryError] = useState("");
   const [quantityError, setQuantityError] = useState("");
   const [warehouseError, setWarehouseError] = useState("");
+
+  const categories = [
+    "Electronics",
+    "Gear",
+    "Apparel",
+    "Accessories",
+    "Health",
+    "Gear",
+  ];
+
+  useEffect(() => {
+    // Fetch inventory data using inventoryID?
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
+      .then((response) => {
+        const inventoryData = response.data;
+        console.log("inventoryData", inventoryData);
+        setItemName(inventoryData.item_name);
+        setDescription(inventoryData.description);
+        setCategory(inventoryData.category);
+        setStatus(inventoryData.status);
+        setWarehouse(inventoryData.warehouse_id);
+
+        if (inventoryData.status === "In Stock") {
+          setQuantity(inventoryData.quantity);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching inventory details:", error);
+      });
+
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/warehouses/`)
+      .then((response) => {
+        setWarehouseList(response.data);
+      })
+      .catch((err) => console.error(err));
+  }, [params]);
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
@@ -23,9 +64,9 @@ function InventoryDetailsForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     let valid = true;
-    
+
     if (itemName === "") {
       setItemNameError("Item Name is required.");
       valid = false;
@@ -60,7 +101,7 @@ function InventoryDetailsForm() {
     } else {
       setWarehouseError("");
     }
-    
+
     if (valid) {
       // For this part, should perform the backend submit logic
     }
@@ -76,7 +117,9 @@ function InventoryDetailsForm() {
             <br />
             <input
               placeholder="Item Name"
-              className={`inventoryDetailsForm__itemName-input ${itemNameError && 'error'}`}
+              className={`inventoryDetailsForm__itemName-input ${
+                itemNameError && "error"
+              }`}
               type="text"
               name="itemName"
               value={itemName}
@@ -89,7 +132,9 @@ function InventoryDetailsForm() {
             <br />
             <textarea
               placeholder="Please enter a brief item description..."
-              className={`inventoryDetailsForm__description-input ${descriptionError && 'error'}`}
+              className={`inventoryDetailsForm__description-input ${
+                descriptionError && "error"
+              }`}
               type="text"
               name="description"
               value={description}
@@ -101,15 +146,18 @@ function InventoryDetailsForm() {
             <label>Category</label>
             <br />
             <select
-              className={`inventoryDetailsForm__category-input ${categoryError && 'error'}`}
+              className={`inventoryDetailsForm__category-input ${
+                categoryError && "error"
+              }`}
               name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="">Please Select</option>
-              <option value="category1">Category 1</option>
-              <option value="category2">Category 2</option>
-              <option value="category3">Category 3</option>
+              {categories.map((categoryElement, index) => (
+                <option key={index} value={categoryElement}>
+                  {categoryElement}
+                </option>
+              ))}
             </select>
             <div className="error-message">{categoryError}</div>
           </div>
@@ -148,7 +196,9 @@ function InventoryDetailsForm() {
               <br />
               <input
                 placeholder="0"
-                className={`inventoryDetailsForm__phone-number-input ${quantityError && 'error'}`}
+                className={`inventoryDetailsForm__phone-number-input ${
+                  quantityError && "error"
+                }`}
                 type="text"
                 name="quantity"
                 value={quantity}
@@ -161,15 +211,21 @@ function InventoryDetailsForm() {
             <label>Warehouse</label>
             <br />
             <select
-              className={`inventoryDetailsForm__category-input ${warehouseError && 'error'}`}
+              className={`inventoryDetailsForm__category-input ${
+                warehouseError && "error"
+              }`}
               name="warehouse"
               value={warehouse}
               onChange={(e) => setWarehouse(e.target.value)}
             >
-              <option value="">Please Select</option>
-              <option value="warehouse1">Warehouse 1</option>
-              <option value="warehouse2">Warehouse 2</option>
-              <option value="warehouse3">Warehouse 3</option>
+              <option disabled value="" selected>
+                Please select
+              </option>
+              {warehouseList.map((warehouse) => (
+                <option key={warehouse.id} value={warehouse.warehouse_name}>
+                  {warehouse.warehouse_name}
+                </option>
+              ))}
             </select>
             <div className="error-message">{warehouseError}</div>
           </div>
@@ -182,7 +238,10 @@ function InventoryDetailsForm() {
         >
           Cancel
         </button>
-        <button type="submit" className="inventoryDetailsForm__button-addInventory">
+        <button
+          type="submit"
+          className="inventoryDetailsForm__button-addInventory"
+        >
           + Add Item
         </button>
       </div>
