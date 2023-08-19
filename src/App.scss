@@ -24,12 +24,11 @@
 
     @include tablet {
       width: 94%;
-      top: -6rem;
+      top: -7.5rem;
     }
 
     @include desktop {
-      width: 82%;
-      top: -7rem;
+      width: 80%;
     }
   }
 
