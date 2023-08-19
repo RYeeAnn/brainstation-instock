@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Modal from "../../components/Modal/Modal";
 
-function InventoryDataList() {
+function InventoryDataList( {warehouseID} ) {
   const api_URL = `${process.env.REACT_APP_API_URL}/inventories`;
 
   const [inventoryData, setInventoryData] = useState([]);
@@ -46,12 +46,26 @@ function InventoryDataList() {
     axios
       .get(api_URL)
       .then((response) => {
-        setInventoryData(response.data);
+
+        console.log("res data:: ", response.data)
+
+        
+
+        if (warehouseID) {
+          setInventoryData(response.data.filter((warehouse) => {
+            return warehouse.warehouse_id == warehouseID;
+          }))
+        } else {
+          setInventoryData(response.data);
+        }
+        
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  console.log("InventoryData: ", inventoryData);
 
   return (
     <div className="inventory-data-list">
