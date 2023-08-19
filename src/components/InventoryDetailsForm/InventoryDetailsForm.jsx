@@ -218,7 +218,7 @@ function InventoryDetailsForm() {
               value={warehouse}
               onChange={(e) => setWarehouse(e.target.value)}
             >
-              <option disabled value="" selected>
+              <option disabled value="" selected> {/* This is a placeholder */}
                 Please select
               </option>
               {warehouseList.map((warehouse) => (
