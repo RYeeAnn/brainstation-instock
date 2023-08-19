@@ -13,11 +13,11 @@ function WarehousePage() {
   const api_URL = `${process.env.REACT_APP_API_URL}`
   axios.get(`${api_URL}/warehouses/${warehouseID}/inventories`)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setinventoriesForWarehouse(response.data);
     })
     .catch((error) => {
-      console.timeLog(error)
+      console.log(error)
     });
 
 
