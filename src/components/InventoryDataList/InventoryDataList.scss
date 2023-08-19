@@ -29,6 +29,10 @@
             flex-shrink: 0;
             padding: 0px 40px;
         }
+
+        @include desktop {
+            margin-top: 1rem;
+        }
     }
 
     &__heading-wrapper {
