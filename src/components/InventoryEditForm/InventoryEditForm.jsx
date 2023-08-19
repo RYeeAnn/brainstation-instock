@@ -180,7 +180,7 @@ function InventoryEditForm() {
               value={warehouse}
               onChange={(e) => setWarehouse(e.target.value)}
             >
-                {warehouseList.map(warehouse=> <option key={warehouse.id} value={warehouse.warehouse_name}>{warehouse.warehouse_name}</option>)}
+                {warehouseList.map(warehouse=> <option key={  warehouse.id} value={warehouse.warehouse_name}>{warehouse.warehouse_name}</option>)}
             </select>
             <div className="error-message">{warehouseError}</div>
           </div>
