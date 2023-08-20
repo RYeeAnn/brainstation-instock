@@ -120,11 +120,13 @@
         @include tablet {
             padding: 0rem 1rem;
             // height: 4.75rem;
+            // justify-content: flex-start;
         }
 
         @include desktop {
             height: 4.75rem;
             padding: 0px 40px;
+            
         }
     }
 
@@ -147,7 +149,8 @@
             &--left {
                 align-items: flex-start;
                 justify-content: flex-start;
-                width: 55%;
+                width: 50%;
+                margin-right: 1rem;
             }
 
             &--right {
@@ -164,7 +167,8 @@
             &--left {
                 align-items: flex-start;
                 justify-content: flex-start;
-                width: 55%;
+                min-width: 40%;
+                margin-right: 2rem;
             }
 
             &--right {
@@ -172,8 +176,23 @@
                 display: inline-flex;
                 flex-direction: row;
                 justify-content: center;
+                min-width: 40%;
+                margin-right: 2rem;
             }
         }
+
+        @include desktop {
+            &--left {
+                min-width: 50%;
+                margin-right: 3rem;
+                
+            }
+
+            &--right {
+                min-width: 50%;
+            }
+        }
+        
     }
 
     &__content-list-items {
@@ -199,9 +218,15 @@
             // flex-direction: row;
             // width: 19%;
             // width: 20%;
-            width: 50%;
-            margin-right: 2rem;
+            width: 100%;
+            margin-right: 4rem;
 
+        }
+
+        @include desktop {
+            margin-right: 2rem;
+            
+            
         }
 
         //to remove
@@ -279,6 +304,7 @@
             margin-right: 12.5rem;
             width: 100%;
     }
+    
     }
 
     &__content-list-edit-container {
@@ -288,6 +314,16 @@
             align-items: flex-end;
             width: 100%;
     }
+        @include tablet {
+            margin-right: 7.5rem;
+        }
+
+        @include desktop {
+            margin-right: 6.2rem;
+        }
+
+
+    
     }
 
     &__content-list-images {
