@@ -13,7 +13,6 @@ import InventoryItemPage from './pages/InventoryItemPage/InventoryItemPage';
 import EditWarehousePage from './pages/EditWarehousePage/EditWarehousePage';
 import InventoryEditForm from './components/InventoryEditForm/InventoryEditForm';
 import AddInventoryPage from './pages/AddInventoryPage/AddInventoryPage';
-import WarehouseDetailsPage from './pages/WarehouseDetailsPage';
 
 function App() {
   return (

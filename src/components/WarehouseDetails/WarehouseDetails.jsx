@@ -9,7 +9,7 @@ function WarehouseDetails({ warehouse }) {
         <div className="warehouse-detail">
           <h3 className="warehouse-detail__title warehouse-detail__address">WAREHOUSE ADDRESS:</h3>
           <p className="warehouse-detail__info warehouse-detail__info--address">
-            {warehouse?.address}{warehouse?.city}{warehouse?.country}
+            {warehouse?.address}, {warehouse?.city}, {warehouse?.country}
           </p>
         </div>
         <div className="contact-details">
