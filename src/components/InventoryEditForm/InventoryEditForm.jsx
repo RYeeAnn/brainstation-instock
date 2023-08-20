@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import "./InventoryEditForm.scss";
+import PageTitleBar from "../PageTitleBar/PageTitleBar";
 
 function InventoryEditForm() {
   const navigate = useNavigate();
@@ -22,9 +23,14 @@ function InventoryEditForm() {
     'Electronics', 'Gear','Apparel', 'Accessories','Health','Gear'
   ];
 
+  let api_url = process.env.REACT_APP_API_URL;
+  let { itemID } = useParams();
+
+  const [itemData, setItemData] = useState({});
+
   useEffect(() => {
 
-    // Fetch inventory data using inventoryID?
+    // Fetch inventory data using inventoryID
     axios
       .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
       .then((response) => {
@@ -35,6 +41,7 @@ function InventoryEditForm() {
         setCategory(inventoryData.category);
         setStatus(inventoryData.status);
         setWarehouse(inventoryData.warehouse_id);
+        
       })
       .catch((error) => {
         console.error("Error fetching inventory details:", error);
@@ -47,7 +54,11 @@ function InventoryEditForm() {
 
   }, [params]);
 
-
+  useEffect(() => {
+    axios.get(`${api_url}/inventories/${itemID}`).then((res) => {
+        setItemData(res.data);
+    });
+}, [itemID]);
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
@@ -111,6 +122,7 @@ function InventoryEditForm() {
 
   return (
     <form className="inventoryDetailsForm" onSubmit={handleSubmit}>
+      <PageTitleBar title={itemData.item_name} edit={true} />
       <div className="inventoryDetailsForm__overall-container">
         <div className="inventoryDetails-container">
           <h2>Item Details</h2>
