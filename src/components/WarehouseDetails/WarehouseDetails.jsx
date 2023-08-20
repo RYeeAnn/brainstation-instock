@@ -2,7 +2,7 @@ import React from "react";
 import "./WarehouseDetails.scss";
 
 function WarehouseDetails({ warehouse }) {
-  console.log("WAREHOUSE", warehouse)
+  // console.log("WAREHOUSE", warehouse)
   return (
     <section className="warehouse-section">
       <div className="warehouse-details">

@@ -84,9 +84,7 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
         return email.match(validEmailRegex);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
+    const validateAll = (event) => {
         if (!event.target.name.value) {
             alert('Error: Warehouse Name Required');
             return
@@ -130,6 +128,56 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             return
         }
 
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // if (!event.target.name.value) {
+        //     alert('Error: Warehouse Name Required');
+        //     return
+        // }
+        // if (!event.target.address.value) {
+        //     alert('Error: Address Required');
+        //     return
+        // }
+        // if (!event.target.city.value) {
+        //     alert('Error: City Required');
+        //     return
+        // }
+        // if (!event.target.country.value) {
+        //     alert('Error: Country Required');
+        //     return
+        // }
+
+        // if (!event.target.contactName.value) {
+        //     alert('Error: Contact Name Required');
+        //     return
+        // }
+        // if (!event.target.position.value) {
+        //     alert('Error: Position Required');
+        //     return
+        // }
+        // if (!event.target.phoneNumber.value) {
+        //     alert('Error: Phone Number Required');
+        //     return
+        // }
+        // if (!validatePhoneNumber(event.target.phoneNumber.value)) {
+        //     alert('Error: Please Enter a Valid Phone Number');
+        //     return
+        // }
+        // if (!event.target.email.value) {
+        //     alert('Error: Email Required');
+        //     return
+        // }
+
+        // if (!validateEmail(event.target.email.value)) {
+        //     alert('Error: Please Enter a Valid Email Address');
+        //     return
+        // }
+
+        validateAll(event);
+
         let responseObject = {
             warehouse_name: event.target.name.value,
             address: event.target.address.value,
@@ -139,8 +187,6 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             contact_position: event.target.position.value,
             contact_phone: event.target.phoneNumber.value,
             contact_email: event.target.email.value
-
-
         }
 
         axios.post(`${api_url}/warehouses`, responseObject).then((res) => {
@@ -151,8 +197,75 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
         })
     }
 
+    const handleEdit = (event) => {
+        event.preventDefault();
+
+        // if (!event.target.name.value) {
+        //     alert('Error: Warehouse Name Required');
+        //     return
+        // }
+        // if (!event.target.address.value) {
+        //     alert('Error: Address Required');
+        //     return
+        // }
+        // if (!event.target.city.value) {
+        //     alert('Error: City Required');
+        //     return
+        // }
+        // if (!event.target.country.value) {
+        //     alert('Error: Country Required');
+        //     return
+        // }
+
+        // if (!event.target.contactName.value) {
+        //     alert('Error: Contact Name Required');
+        //     return
+        // }
+        // if (!event.target.position.value) {
+        //     alert('Error: Position Required');
+        //     return
+        // }
+        // if (!event.target.phoneNumber.value) {
+        //     alert('Error: Phone Number Required');
+        //     return
+        // }
+        // if (!validatePhoneNumber(event.target.phoneNumber.value)) {
+        //     alert('Error: Please Enter a Valid Phone Number');
+        //     return
+        // }
+        // if (!event.target.email.value) {
+        //     alert('Error: Email Required');
+        //     return
+        // }
+
+        // if (!validateEmail(event.target.email.value)) {
+        //     alert('Error: Please Enter a Valid Email Address');
+        //     return
+        // }
+
+validateAll(event);
+
+        let responseObject = {
+            warehouse_name: event.target.name.value,
+            address: event.target.address.value,
+            city: event.target.city.value,
+            country: event.target.country.value,
+            contact_name: event.target.contactName.value,
+            contact_position: event.target.position.value,
+            contact_phone: event.target.phoneNumber.value,
+            contact_email: event.target.email.value
+        }
+        axios.put(`${api_url}/warehouses/${warehouseID}`, responseObject).then((res) => {
+            alert("Warehouse Updated successfully");
+            navigate('../warehouses')
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
   return (
-    <form onSubmit={handleSubmit} className="warehouseDetailsForm">
+    <form onSubmit={(calledFrom === "AddWarehousePage" ? handleSubmit : handleEdit )} className="warehouseDetailsForm">
+
         <div className="warehouseDetailsForm__overall-container">
         <div className="warehouseDetails-container">
             <h2>Warehouse Details</h2>
