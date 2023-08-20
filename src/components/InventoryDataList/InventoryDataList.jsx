@@ -47,7 +47,6 @@ function InventoryDataList( {warehouseID} ) {
       .get(api_URL)
       .then((response) => {
 
-        console.log("res data:: ", response.data)
 
         
 
@@ -65,7 +64,6 @@ function InventoryDataList( {warehouseID} ) {
       });
   }, []);
 
-  console.log("InventoryData: ", inventoryData);
 
   return (
     <div className="inventory-data-list">
