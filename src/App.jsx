@@ -31,6 +31,7 @@ function App() {
           <Route path="/inventory/:itemID" element={ <InventoryItemPage />} />
           <Route path="/inventory/:itemID/edit" element={ <InventoryEditForm /> } />
 
+
       </Routes>
       </div>
       <Footer />
