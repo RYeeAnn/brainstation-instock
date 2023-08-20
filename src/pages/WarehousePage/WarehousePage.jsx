@@ -1,43 +1,34 @@
 import './WarehousePage.scss';
 import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails';
+import PageTitleBar from '../../components/PageTitleBar/PageTitleBar';
+import InventoryDataList from '../../components/InventoryDataList/InventoryDataList';
+
+import { useParams } from 'react-router';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function WarehousePage() {
 
-  const [inventoriesForWarehouse, setinventoriesForWarehouse] = useState([]);
+  let api_url = process.env.REACT_APP_API_URL;
+  let { warehouseID } = useParams();
 
-  const { warehouseID } = useParams();
 
-  const api_URL = `${process.env.REACT_APP_API_URL}`
-  axios.get(`${api_URL}/warehouses/${warehouseID}/inventories`)
-    .then((response) => {
-      // console.log(response.data);
-      setinventoriesForWarehouse(response.data);
-    })
-    .catch((error) => {
-      console.log(error)
+  const [warehouseName, setWarehouseName] = useState("");
+
+  useEffect(() => {
+    axios.get(`${api_url}/warehouses/${warehouseID}`).then((res) => {
+        setWarehouseName(res.data[0].warehouse_name);
+
     });
-
+}, []);
 
   return (
-    <>
-      <WarehouseDetails />
+    <div>
+    <PageTitleBar title={warehouseName} edit={true} />
+    <WarehouseDetails />
+    <InventoryDataList warehouseID={warehouseID} />
 
-      <li>
-        {inventoriesForWarehouse.map((inventory) => {
-          return (
-            <>
-              <p>{inventory.item_name}</p>
-              <p>{inventory.category}</p>
-              <p>{inventory.status}</p>
-              <p>{inventory.quantity}</p>
-            </>
-          )
-        })}
-      </li>
-    </>
+    </div>
 
   )
 }

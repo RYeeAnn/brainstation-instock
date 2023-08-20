@@ -5,6 +5,7 @@
     margin: 16px;
     padding-top: 2rem;
     padding-bottom: 1rem;
+    margin-left: 0;
 
     border-bottom: 1px $Cloud solid;
     width: 100%;
@@ -16,8 +17,12 @@
         justify-content: space-between;
         margin-left: 0;
         border: none;
-        margin-bottom: 0;
+        margin-bottom: 1rem;
 
+    }
+
+    @include desktop {
+        margin-bottom: 0;
     }
     
 
