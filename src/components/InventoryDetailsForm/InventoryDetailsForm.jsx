@@ -5,7 +5,7 @@ import "./InventoryDetailsForm.scss";
 
 function InventoryDetailsForm() {
 
-  const api_URL = `${process.env.REACT_APP_API_URL}/inventories`
+  const api_url = `${process.env.REACT_APP_API_URL}/inventories`;
 
   const navigate = useNavigate();
   const params = useParams();
@@ -15,6 +15,7 @@ function InventoryDetailsForm() {
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [warehouse, setWarehouse] = useState("");
+  const [warehouseID, setWarehouseID] = useState("");
   const [warehouseList, setWarehouseList] = useState([]);
 
   const [itemNameError, setItemNameError] = useState("");
@@ -34,24 +35,24 @@ function InventoryDetailsForm() {
 
   useEffect(() => {
     // Fetch inventory data using inventoryID?
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
-      .then((response) => {
-        const inventoryData = response.data;
-        console.log("inventoryData", inventoryData);
-        setItemName(inventoryData.item_name);
-        setDescription(inventoryData.description);
-        setCategory(inventoryData.category);
-        setStatus(inventoryData.status);
-        setWarehouse(inventoryData.warehouse_id);
+    // axios
+    //   .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
+    //   .then((response) => {
+    //     const inventoryData = response.data;
+    //     console.log("inventoryData", inventoryData);
+    //     setItemName(inventoryData.item_name);
+    //     setDescription(inventoryData.description);
+    //     setCategory(inventoryData.category);
+    //     setStatus(inventoryData.status);
+    //     setWarehouse(inventoryData.warehouse_id);
 
-        if (inventoryData.status === "In Stock") {
-          setQuantity(inventoryData.quantity);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching inventory details:", error);
-      });
+    //     if (inventoryData.status === "In Stock") {
+    //       setQuantity(inventoryData.quantity);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching inventory details:", error);
+    //   });
 
     axios
       .get(`${process.env.REACT_APP_API_URL}/warehouses/`)
@@ -67,7 +68,6 @@ function InventoryDetailsForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("event", event)
 
     let valid = true;
 
@@ -107,8 +107,22 @@ function InventoryDetailsForm() {
     }
 
     if (valid) {
-      // For this part, should perform the backend submit logic
-      // axios.post(api_URL, )
+      let new_inventoryItem = {
+        "warehouse_id": event.target.warehouse.value,
+        "item_name": event.target.itemName.value,
+        "description": event.target.description.value,
+        "category": event.target.category.value,
+        "status": event.target.status.value,
+        "quantity": event.target.quantity.value
+    
+    }
+
+      axios.post(api_url, new_inventoryItem).then((res) => {
+        alert("Successfully created new Inventory Item!");
+        navigate('../inventory');
+      })
+
+
     }
   };
 
@@ -221,13 +235,15 @@ function InventoryDetailsForm() {
               }`}
               name="warehouse"
               value={warehouse}
-              onChange={(e) => setWarehouse(e.target.value)}
+              onChange={(e) => {
+                setWarehouse(e.target.value);
+              }}
             >
               <option disabled value="" selected> {/* This is a placeholder */}
                 Please select
               </option>
               {warehouseList.map((warehouse) => (
-                <option key={warehouse.id} value={warehouse.warehouse_name}>
+                <option id={warehouse.id} value={warehouse.id}>
                   {warehouse.warehouse_name}
                 </option>
               ))}
