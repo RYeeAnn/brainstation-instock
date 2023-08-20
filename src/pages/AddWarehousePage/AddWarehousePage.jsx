@@ -1,8 +1,6 @@
 import './AddWarehousePage.scss';
 import PageTitleBar from '../../components/PageTitleBar/PageTitleBar';
 import WarehouseDetailsForm from '../../components/WarehouseDetailsForm/WarehouseDetailsForm';
-import ButtonAddWarehouse from '../../components/ButtonAddWarehouse/ButtonAddWarehouse';
-import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 
 function AddWarehousePage() {
   return (

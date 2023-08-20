@@ -18,10 +18,6 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
     const[contactPhoneInput, setContactPhoneInput] = useState("");
     const[contactEmailInput, setContactEmailInput] = useState("");
 
-    // const warehouseNameRef = useRef(); 
-
-    // const [selectedWarehouse, setSelectedWarehouse] = useState([]);
-
     if (calledFrom === "AddWarehousePage") {
         warehouseID = null;
     }
@@ -30,8 +26,6 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
     if (calledFrom === "EditWarehousePage") {
         axios.get(`${api_url}/warehouses/${warehouseID}`)
         .then((response) => {
-            console.log(response.data);
-            // setSelectedWarehouse(response.data);
             setWarehouseNameInput(response.data[0].warehouse_name);
             setAddressInput(response.data[0].address);
             setCityInput(response.data[0].city);
@@ -48,67 +42,35 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
     },[])
     
     const handleWarehouseNameChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setWarehouseNameInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
     const handleAddressChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setAddressInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
     const handleCityChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setCityInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
     const handleCountryChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setCountryInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
     const handleContactNameChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setContactNameInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
     const handleContactPositionChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setContactPositionInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
     const handleContactPhoneChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setContactPhoneInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
     const handleContactEmailChange = (event) => {
-        // console.log("Input changed");
-        // console.log(event.target.value);
         setContactEmailInput(event.target.value);
-
-        // console.log(warehouseNameRef.current);
     }
 
 
@@ -197,23 +159,22 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             <div className="warehouseDetailsForm__field-container">
             <label>Warehouse Name</label>
             <br/>
-            <input onChange={(event) => handleWarehouseNameChange(event)} placeholder="Warehouse Name" className="warehouseDetailsForm__name-input" type="text" name="name" value={calledFrom === "EditWarehousePage" ? warehouseNameInput : ""} />
-            {/* selectedWarehouse[0]?. */}
+            <input onChange={(event) => handleWarehouseNameChange(event)} placeholder="Warehouse Name" className="warehouseDetailsForm__name-input" type="text" name="name" value={warehouseNameInput} /> 
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Street Address</label>
             <br/>
-            <input onChange={(event) => handleAddressChange(event)} placeholder="Street Address" className="warehouseDetailsForm__address-input" type="text" name="address" value={calledFrom === "EditWarehousePage" ? addressInput : ""}  />
+            <input onChange={(event) => handleAddressChange(event)} placeholder="Street Address" className="warehouseDetailsForm__address-input" type="text" name="address" value={addressInput}  />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>City</label>
             <br/>
-            <input onChange={(event) => handleCityChange(event)} placeholder="City" className="warehouseDetailsForm__address-input" type="text" name="city" value={calledFrom === "EditWarehousePage" ? cityInput : ""} />
+            <input onChange={(event) => handleCityChange(event)} placeholder="City" className="warehouseDetailsForm__address-input" type="text" name="city" value={cityInput} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Country</label>
             <br/>
-            <input onChange={(event) => handleCountryChange(event)} placeholder="Country" className="warehouseDetailsForm__country-input" type="text" name="country" value={calledFrom === "EditWarehousePage" ? countryInput : ""} />
+            <input onChange={(event) => handleCountryChange(event)} placeholder="Country" className="warehouseDetailsForm__country-input" type="text" name="country" value={countryInput} />
             </div>
         </div>
 
@@ -222,29 +183,31 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             <div className="warehouseDetailsForm__field-container">
             <label>Contact Name</label>
             <br/>
-            <input onChange={(event) => handleContactNameChange(event)} placeholder="Contact Name" className="warehouseDetailsForm__contact-name-input" type="text" name="contactName" value={calledFrom === "EditWarehousePage" ? contactNameInput : ""} />
+            <input onChange={(event) => handleContactNameChange(event)} placeholder="Contact Name" className="warehouseDetailsForm__contact-name-input" type="text" name="contactName" value={contactNameInput} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Position</label>
             <br/>
-            <input onChange={(event) => handleContactPositionChange(event)} placeholder="Position" className="warehouseDetailsForm__position-input" type="text" name="position" value={calledFrom === "EditWarehousePage" ? contactPositionInput : ""} />
+            <input onChange={(event) => handleContactPositionChange(event)} placeholder="Position" className="warehouseDetailsForm__position-input" type="text" name="position" value={contactPositionInput} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Phone Number</label>
             <br/>
-            <input onChange={(event) => handleContactPhoneChange(event)} placeholder="Phone Number" className="warehouseDetailsForm__phone-number-input" type="text" name="phoneNumber" value={calledFrom === "EditWarehousePage" ? contactPhoneInput : ""} />
+            <input onChange={(event) => handleContactPhoneChange(event)} placeholder="Phone Number" className="warehouseDetailsForm__phone-number-input" type="text" name="phoneNumber" value={contactPhoneInput} />
             </div>
             <div className="warehouseDetailsForm__field-container">
             <label>Email</label>
             <br/>
-            <input onChange={(event) => handleContactEmailChange(event)} placeholder="Email" className="warehouseDetailsForm__email-input" type="text" name="email" value={calledFrom === "EditWarehousePage" ? contactEmailInput : ""} />
+            <input onChange={(event) => handleContactEmailChange(event)} placeholder="Email" className="warehouseDetailsForm__email-input" type="text" name="email" value={contactEmailInput} />
             </div>
             </div>
             
         </div>
         <div className="warehouseDetailsForm__buttons-container">
             <button onClick={() => navigate('../warehouses')} className="warehouseDetailsForm__button-cancel">Cancel</button>
-            <button type="submit" className="warehouseDetailsForm__button-addWarehouse">+ Add Warehouse</button>
+            <button type="submit" className="warehouseDetailsForm__button-addWarehouse">
+                { (calledFrom === "AddWarehousePage" ? "+ Add Warehouse" : "Save" )}
+            </button>
         </div>
 
 

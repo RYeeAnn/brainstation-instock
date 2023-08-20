@@ -89,7 +89,23 @@ function InventoryEditForm() {
     }
     
     if (valid) {
-      // For this part, should perform the backend submit logic
+
+      let updated_inventoryItem = {
+        "warehouse_id": event.target.warehouse.value,
+        "item_name": event.target.itemName.value,
+        "description": event.target.description.value,
+        "category": event.target.category.value,
+        "status": event.target.status.value,
+    }
+
+      console.log("UPDATED INVNETORY ITEM: ", updated_inventoryItem);
+
+      axios.put(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`, updated_inventoryItem).then(
+        res => {
+          alert("Successfully edited Inventory Item!");
+          navigate('../inventory');
+        }
+      )
     }
   };
 
@@ -180,7 +196,7 @@ function InventoryEditForm() {
               value={warehouse}
               onChange={(e) => setWarehouse(e.target.value)}
             >
-                {warehouseList.map(warehouse=> <option key={  warehouse.id} value={warehouse.warehouse_name}>{warehouse.warehouse_name}</option>)}
+                {warehouseList.map(warehouse=> <option key={  warehouse.id} value={warehouse.id}>{warehouse.warehouse_name}</option>)}
             </select>
             <div className="error-message">{warehouseError}</div>
           </div>
@@ -194,7 +210,7 @@ function InventoryEditForm() {
           Cancel
         </button>
         <button type="submit" className="inventoryDetailsForm__button-addInventory">
-          + Add Item
+          Edit Item
         </button>
       </div>
     </form>
