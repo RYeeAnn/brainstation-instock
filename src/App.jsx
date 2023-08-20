@@ -13,6 +13,7 @@ import InventoryItemPage from './pages/InventoryItemPage/InventoryItemPage';
 import EditWarehousePage from './pages/EditWarehousePage/EditWarehousePage';
 import InventoryEditForm from './components/InventoryEditForm/InventoryEditForm';
 import AddInventoryPage from './pages/AddInventoryPage/AddInventoryPage';
+import WarehouseDetailsPage from './pages/WarehouseDetailsPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/inventory/addInventory" element={ <AddInventoryPage /> } />
           <Route path="/inventory/:itemID" element={ <InventoryItemPage />} />
           <Route path="/inventory/:itemID/edit" element={ <InventoryEditForm /> } />
+
 
       </Routes>
       </div>
