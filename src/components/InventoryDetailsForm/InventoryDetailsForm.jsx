@@ -4,6 +4,9 @@ import axios from "axios";
 import "./InventoryDetailsForm.scss";
 
 function InventoryDetailsForm() {
+
+  const api_URL = `${process.env.REACT_APP_API_URL}/inventories`
+
   const navigate = useNavigate();
   const params = useParams();
   const [status, setStatus] = useState("");
@@ -64,6 +67,7 @@ function InventoryDetailsForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("event", event)
 
     let valid = true;
 
@@ -104,6 +108,7 @@ function InventoryDetailsForm() {
 
     if (valid) {
       // For this part, should perform the backend submit logic
+      // axios.post(api_URL, )
     }
   };
 

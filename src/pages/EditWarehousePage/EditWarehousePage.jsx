@@ -1,8 +1,6 @@
 import "./EditWarehousePage.scss";
 import PageTitleBar from '../../components/PageTitleBar/PageTitleBar';
 import WarehouseDetailsForm from '../../components/WarehouseDetailsForm/WarehouseDetailsForm';
-import ButtonAddWarehouse from '../../components/ButtonAddWarehouse/ButtonAddWarehouse';
-import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 import { useParams } from "react-router-dom";
 
 

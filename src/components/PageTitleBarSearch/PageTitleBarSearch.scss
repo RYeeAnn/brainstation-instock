@@ -27,12 +27,13 @@
     
 
     &__search {
-        border-radius: 15px;
+        border-radius: 20px;
         padding: 0.4rem;
         background-image: url(../../assets/Icons/search-24px.svg);
         background-repeat: no-repeat;
         background-position-x: right;
         width: 85%;
+        height: 2.5rem;
         margin: 16px 0;
         margin-left: 1.5rem;
         border: 1px $Cloud solid;
@@ -60,9 +61,10 @@
     &__button {
         background-color: $Instock-Indigo;
         color: $White;
-        border-radius: 15px;
+        border-radius: 20px;
         padding: 0.5rem;
         width: 85%;
+        height: 2.5rem;
         margin-left: 1.5rem;
         border: 1px $Cloud solid;
 
