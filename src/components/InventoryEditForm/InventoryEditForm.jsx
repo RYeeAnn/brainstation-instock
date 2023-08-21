@@ -22,7 +22,7 @@ function InventoryEditForm() {
   const [warehouseError, setWarehouseError] = useState("");
 
   const categories = [
-    'Electronics', 'Gear', 'Apparel', 'Accessories', 'Health', 'Gear'
+    'Electronics', 'Gear', 'Apparel', 'Accessories', 'Health'
   ];
 
   let api_url = process.env.REACT_APP_API_URL;
@@ -35,6 +35,7 @@ function InventoryEditForm() {
       .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
       .then((response) => {
         const inventoryData = response.data;
+        // console.log('inventoryData', inventoryData)
         setItemName(inventoryData.item_name);
         setDescription(inventoryData.description);
         setCategory(inventoryData.category);
@@ -115,7 +116,7 @@ function InventoryEditForm() {
         "description": event.target.description.value,
         "category": event.target.category.value,
         "status": event.target.status.value,
-        "quantity": event.target.quantity.value
+        "quantity": event.target.status.value === "Out of Stock" ? "0" : event.target.quantity.value
       };
 
       axios.put(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`, updated_inventoryItem)
