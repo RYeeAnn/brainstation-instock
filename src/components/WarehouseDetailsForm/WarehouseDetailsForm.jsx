@@ -84,9 +84,7 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
         return email.match(validEmailRegex);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
+    const validateAll = (event) => {
         if (!event.target.name.value) {
             alert('Error: Warehouse Name Required');
             return
@@ -130,6 +128,13 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             return
         }
 
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        validateAll(event);
+
         let responseObject = {
             warehouse_name: event.target.name.value,
             address: event.target.address.value,
@@ -139,8 +144,6 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
             contact_position: event.target.position.value,
             contact_phone: event.target.phoneNumber.value,
             contact_email: event.target.email.value
-
-
         }
 
         axios.post(`${api_url}/warehouses`, responseObject).then((res) => {
@@ -151,8 +154,32 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
         })
     }
 
+    const handleEdit = (event) => {
+        event.preventDefault();
+
+        validateAll(event);
+
+        let responseObject = {
+            warehouse_name: event.target.name.value,
+            address: event.target.address.value,
+            city: event.target.city.value,
+            country: event.target.country.value,
+            contact_name: event.target.contactName.value,
+            contact_position: event.target.position.value,
+            contact_phone: event.target.phoneNumber.value,
+            contact_email: event.target.email.value
+        }
+        axios.put(`${api_url}/warehouses/${warehouseID}`, responseObject).then((res) => {
+            alert("Warehouse Updated successfully");
+            navigate('../warehouses')
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
   return (
-    <form onSubmit={handleSubmit} className="warehouseDetailsForm">
+    <form onSubmit={(calledFrom === "AddWarehousePage" ? handleSubmit : handleEdit )} className="warehouseDetailsForm">
+
         <div className="warehouseDetailsForm__overall-container">
         <div className="warehouseDetails-container">
             <h2>Warehouse Details</h2>
