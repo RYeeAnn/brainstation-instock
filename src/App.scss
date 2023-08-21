@@ -1,3 +1,75 @@
+@use './styles/partials/mixins' as *;
+@use './styles/partials/variables' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
 .App {
-  text-align: center;
+  font-family: "Titillium Web";
+
+  &__pageCard {
+    width: 93%;
+    margin: auto;
+    position: relative;
+    top: -5rem;
+    z-index: 7;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px $Cloud;
+
+
+    @include tablet {
+      width: 94%;
+      top: -7.5rem;
+    }
+
+    @include desktop {
+      width: 80%;
+    }
+  }
+
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 36px;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 28px;
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+h3 {
+  font-size: 13px;
+  line-height: 20px;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+h4 {
+  font-size: 11px;
+  line-height: 16px;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
 }

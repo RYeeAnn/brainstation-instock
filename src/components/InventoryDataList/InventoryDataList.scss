@@ -1,0 +1,318 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.inventory-data-list {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &__unordered-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__heading {
+        @include mobile {
+            display: none;
+        }
+
+        @include tablet {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: $Light-Grey;
+            height: 2.5rem;
+            flex-shrink: 0;
+            padding: 0px 40px;
+        }
+
+        @include desktop {
+            margin-top: 1rem;
+        }
+    }
+
+    &__heading-wrapper {
+        width: 20%;
+    }
+
+    &__heading-div {
+        display: inline-flex;
+        flex-direction: row;
+    }
+
+    &__content-items-heading {
+
+        display: inline-flex;
+        // width: 20%;
+        width: fit-content;
+        color: $Slate;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        line-height: 1rem;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid $Cloud;
+        padding: 0rem 1rem;
+
+        @include mobile {
+            flex-direction: column;
+        }
+
+        @include tablet {
+            flex-direction: row;
+        }
+
+    }
+
+    &__content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__content-wrapper {
+        display: flex;
+
+        @include mobile {
+            flex-direction: column;
+            width: 49%;
+            margin-right: 0.5rem;
+        }
+
+        @include tablet {
+            flex-direction: row;
+        }
+
+        &--left {
+            @include tablet {
+                width: 30%;
+                // margin-right: 1rem;
+            }
+
+            @include desktop {
+                width: 44%;
+            }
+        }
+
+        &--right {
+            @include tablet {
+                // width: 70%;
+                width: 54%;
+            }
+
+            @include desktop {
+                width: 48%;
+            }
+        }
+    }
+
+    &__content {
+        margin-bottom: 1rem;
+
+
+        @include desktop {
+            width: 34%;
+            margin: 1rem 0rem;
+        }
+
+        @include tablet {
+            // width: 50%;
+            margin-right: 1.5rem;
+        }
+
+        &--left {
+            @include desktop {
+                width: 50%;
+
+            }
+        }
+
+        // &--right {}
+    }
+
+    &__content-items {
+        text-decoration: none;
+
+        font-size: 0.8125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.25rem;
+        /* 153.846% */
+
+        &--status {
+            color: $Green;
+            padding: 4px 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            // width: 100%;
+            // width: 105%;
+            width: max-content;
+
+        }
+
+        &--header {
+            color: $Slate;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            line-height: 1rem;
+            /* 145.455% */
+
+            @include mobile {}
+
+            @include tablet {
+                display: none;
+            }
+        }
+
+        &--warehouse {
+            margin-left: 3.5rem;
+        }
+    }
+
+    &__content-items-status-container {
+        border-radius: 20px;
+        background: rgba(21, 132, 99, 0.07);
+
+
+        @include mobile {
+            // width: 50%;
+            width: 67%;
+        }
+
+        @include tablet {
+            // width: 20%;
+            // width: 75%;
+            width: fit-content;
+            margin-left: 2rem;
+            margin-right: 3.5rem;
+        }
+
+        @include desktop {
+            margin-left: 0rem;
+        }
+    }
+
+    &__inventoryItem-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__inventoryItem-name {
+        color: #2E66E5;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__images-container {
+
+        @include mobile {
+            display: flex;
+            width: 100%;
+            padding-bottom: 0.5rem;
+            // justify-content: center;
+            // align-items: center;
+        }
+
+        @include tablet {
+            display: inline-flex;
+            // width: 25%;
+            // width: 20%;
+            width: 17%;
+            padding-left: 2rem;
+
+        }
+    }
+
+    &__images-wrapper {
+        display: inline-flex;
+
+        @include mobile {
+            width: 49%;
+        }
+
+        @include tablet {
+            // width: 25%;
+            width: 42%;
+        }
+
+        &--delete {
+
+            justify-content: flex-start;
+            align-items: flex-start;
+            // margin-right: 15rem;
+        }
+
+        &--edit {
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+    }
+
+    &__image {
+        display: inline-flex;
+        width: 24px;
+        height: 24px;
+
+        // &--delete {
+
+        //     justify-content: flex-start;
+        //     align-items: flex-start;
+        //     // margin-right: 15rem;
+        // }
+
+        // &--edit {
+        //     justify-content: flex-end;
+        //     align-items: flex-end;
+        // }
+    }
+
+
+
+    // &__list-items {
+    //     display: inline-flex;
+    //     justify-content: space-evenly;
+    //     align-items: center;
+    //     width: 15%;
+    // }
+}
+
+
+/* Style for In Stock */
+.inventory-data-list__content-items-status-container .inventory-data-list__content-items--status.in-stock {
+    color: var(--green, #158463);
+    font-family: Titillium Web;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 150% */
+    text-transform: uppercase;
+  }
+  
+
+  /* Style for Out of Stock */
+  .inventory-data-list__content-items-status-container .inventory-data-list__content-items--status.out-of-stock {
+    color: var(--red, #C94515);
+    font-family: Titillium Web;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 150% */
+    text-transform: uppercase;
+  }
+  
+  

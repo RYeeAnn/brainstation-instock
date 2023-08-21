@@ -1,0 +1,163 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+
+.inventoryDetailsForm {
+    
+    
+
+    label {
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    input {
+        border-radius: 20px;
+        border: 1px $Cloud solid;
+        height: 2rem;
+        width: 100%;
+        
+        &::placeholder {
+            padding-left: 1rem;
+        }
+    }
+
+    h2 {
+        margin: 1rem;
+        margin-left: 1.5rem;
+
+        @include tablet {
+            margin-top: 0;
+        }
+    }
+
+    &__overall-container {
+        @include tablet {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+        }
+    }
+
+    &__field-container {
+        margin: 0 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    &__buttons-container {
+        margin: 1.5rem;
+        padding-bottom: 1rem;
+        gap: 2rem;
+        display: flex;
+        justify-content: space-around;
+
+        @include tablet {
+            display: flex;
+            justify-content: end;
+            gap: 0;
+        }
+    }
+
+    &__button-cancel {
+        border-radius: 20px;
+        border: 1px $Cloud solid;
+        color: $Instock-Black;
+        width: 9.5rem;
+        height: 2.3rem;
+        font-size: 13px;
+        background-color: $White;
+
+        @include tablet {
+            margin-right: 1rem;
+            width: 4.5rem;
+        }
+    }
+
+    &__button-addInventory {
+        border-radius: 20px;
+        border: 1px $Cloud solid;
+        width: 9.5rem;
+        height: 2.3rem;
+        background-color: $Instock-Indigo;
+        color: $White;
+        font-size: 13px;
+
+        @include tablet {
+            width: 15%;
+        }
+
+        @include desktop {
+            width: 10%;
+        }
+    }
+
+    &__radio-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 0.2rem;
+    }
+
+    &__radio-buttons label {
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    &__radio-buttons input[type="radio"] {
+        width: 14px; 
+        height: 14px; 
+        margin: 0;
+    }
+}
+
+textarea {
+    font-family: 'Titillium Web';
+    border-radius: 20px;
+    border: 1px #BDC5D5 solid;
+    height: 8rem;
+    padding-top: 0.5rem;
+    width: 100%;
+}
+
+select {
+    border-radius: 20px;
+    border: 1px #BDC5D5 solid;
+    height: 2rem;
+    width: 100%;
+}
+
+
+.inventoryDetails-container {
+    border-bottom: 1px $Cloud solid;
+    padding-bottom: 1.5rem;
+
+    @include tablet {
+        border-bottom: none;
+        width: 40%;
+        padding-bottom: 0;
+    }
+}
+
+.contactDetails-container {
+    padding-bottom: 0.5rem;
+
+    @include tablet {
+        border-left: 1px $Cloud solid;
+        width: 45%;
+        padding-bottom: 0;
+        padding-left: 2rem;
+    }
+}
+
+.radio-instock {
+    padding-right: 2rem;
+}
+
+/* Add this style for error messages */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
