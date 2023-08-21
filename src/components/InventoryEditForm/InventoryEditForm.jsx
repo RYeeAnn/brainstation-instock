@@ -251,4 +251,5 @@ function InventoryEditForm() {
   );
 }
 
+
 export default InventoryEditForm;
