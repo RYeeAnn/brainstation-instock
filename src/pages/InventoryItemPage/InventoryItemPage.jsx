@@ -35,7 +35,10 @@ function InventoryItemPage() {
                     <div className="inventory-Item__status-quantity-container">
                         <div className="inventory-Item__description-field-container">
                             <h4>STATUS:</h4>
-                            <p>{itemData.status}</p>
+                            <p className={`inventory__status ${itemData.status === "In Stock" ? "in-stock" : "out-of-stock"}`}>
+  {itemData.status}
+</p>
+
                         </div>
                         <div className="inventory-Item__description-field-container">
                             <h4>QUANTITY:</h4>

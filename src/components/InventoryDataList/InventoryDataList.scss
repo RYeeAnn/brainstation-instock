@@ -290,13 +290,25 @@
 
 /* Style for In Stock */
 .inventory-data-list__content-items-status-container .inventory-data-list__content-items--status.in-stock {
-    color: green;
+    color: var(--green, #158463);
+    font-family: Titillium Web;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 150% */
+    text-transform: uppercase;
   }
   
 
   /* Style for Out of Stock */
   .inventory-data-list__content-items-status-container .inventory-data-list__content-items--status.out-of-stock {
-    color: red;
+    color: var(--red, #C94515);
+    font-family: Titillium Web;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 150% */
+    text-transform: uppercase;
   }
   
   

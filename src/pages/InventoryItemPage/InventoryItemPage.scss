@@ -60,3 +60,24 @@
         }
     }
 }
+
+/* Style for In Stock */
+.inventory__status.in-stock {
+    color: green;
+    display: inline-flex;
+    padding: 4px 8px;
+    align-items: center;
+    border-radius: 20px;
+    background: rgba(21, 132, 99, 0.07);
+  }
+  
+  /* Style for Out of Stock */
+  .inventory__status.out-of-stock {
+    color: red;
+    display: inline-flex;
+    padding: 4px 8px;
+    align-items: center;
+    border-radius: 20px;
+    background: rgba(21, 132, 99, 0.07);
+  }
+  
