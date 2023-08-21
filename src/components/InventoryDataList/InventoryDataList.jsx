@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Modal from "../../components/Modal/Modal";
 
-function InventoryDataList( {warehouseID} ) {
+function InventoryDataList({ warehouseID }) {
   const api_URL = `${process.env.REACT_APP_API_URL}/inventories`;
 
   const [inventoryData, setInventoryData] = useState([]);
@@ -46,24 +46,20 @@ function InventoryDataList( {warehouseID} ) {
     axios
       .get(api_URL)
       .then((response) => {
-
-
-        
-
         if (warehouseID) {
-          setInventoryData(response.data.filter((warehouse) => {
-            return warehouse.warehouse_id == warehouseID;
-          }))
+          setInventoryData(
+            response.data.filter((warehouse) => {
+              return warehouse.warehouse_id == warehouseID;
+            })
+          );
         } else {
           setInventoryData(response.data);
         }
-        
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
 
   return (
     <div className="inventory-data-list">
@@ -148,7 +144,13 @@ function InventoryDataList( {warehouseID} ) {
                       STATUS
                     </p>
                     <div className="inventory-data-list__content-items-status-container">
-                      <p className="inventory-data-list__content-items inventory-data-list__content-items--status">
+                      <p
+                        className={`inventory-data-list__content-items inventory-data-list__content-items--status ${
+                          inventory.status === "In Stock"
+                            ? "in-stock"
+                            : "out-of-stock"
+                        }`}
+                      >
                         {inventory.status}
                       </p>
                     </div>
@@ -163,13 +165,16 @@ function InventoryDataList( {warehouseID} ) {
                     </p>
                   </div>
 
-                                    <div className="inventory-data-list__content">
-                                        <p className="inventory-data-list__content-items inventory-data-list__content-items--header">WAREHOUSE</p>
-                                        <p className="inventory-data-list__content-items inventory-data-list__content-items--warehouse">{inventory.warehouse_name}</p>
-                                    </div>
-                                </div>
-                            </div>
-
+                  <div className="inventory-data-list__content">
+                    <p className="inventory-data-list__content-items inventory-data-list__content-items--header">
+                      WAREHOUSE
+                    </p>
+                    <p className="inventory-data-list__content-items inventory-data-list__content-items--warehouse">
+                      {inventory.warehouse_name}
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               <div className="inventory-data-list__images-container">
                 <div className="inventory-data-list__images-wrapper inventory-data-list__images-wrapper--delete">

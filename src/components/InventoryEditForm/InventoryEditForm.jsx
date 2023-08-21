@@ -132,7 +132,7 @@ function InventoryEditForm() {
 
   return (
     <form className="inventoryDetailsForm" onSubmit={handleSubmit}>
-      <PageTitleBar title={itemData.item_name} edit={true} />
+      <PageTitleBar title={itemData.item_name} edit={false} />
       <div className="inventoryDetailsForm__overall-container">
         <div className="inventoryDetails-container">
           <h2>Item Details</h2>
