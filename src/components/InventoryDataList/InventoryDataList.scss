@@ -286,3 +286,15 @@
     //     width: 15%;
     // }
 }
+
+/* Style for In Stock */
+.inventory-data-list__content-items-status-container .inventory-data-list__content-items--status.in-stock {
+    color: green;
+  }
+  
+  /* Style for Out of Stock */
+  .inventory-data-list__content-items-status-container .inventory-data-list__content-items--status.out-of-stock {
+    color: red;
+  }
+  
+  
