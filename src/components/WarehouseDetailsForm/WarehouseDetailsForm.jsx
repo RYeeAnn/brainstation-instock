@@ -87,71 +87,79 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
     const validateAll = (event) => {
         if (!event.target.name.value) {
             alert('Error: Warehouse Name Required');
-            return
+            return false
         }
         if (!event.target.address.value) {
             alert('Error: Address Required');
-            return
+            return false
         }
         if (!event.target.city.value) {
             alert('Error: City Required');
-            return
+            return false
         }
         if (!event.target.country.value) {
             alert('Error: Country Required');
-            return
+            return false
         }
 
         if (!event.target.contactName.value) {
             alert('Error: Contact Name Required');
-            return
+            return false
         }
         if (!event.target.position.value) {
             alert('Error: Position Required');
-            return
+            return false
         }
         if (!event.target.phoneNumber.value) {
             alert('Error: Phone Number Required');
-            return
+            return false
         }
         if (!validatePhoneNumber(event.target.phoneNumber.value)) {
             alert('Error: Please Enter a Valid Phone Number');
-            return
+            return false
         }
         if (!event.target.email.value) {
             alert('Error: Email Required');
-            return
+            return false
         }
 
         if (!validateEmail(event.target.email.value)) {
             alert('Error: Please Enter a Valid Email Address');
-            return
+            return false
+        } else {
+            return true
+
         }
+
 
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        validateAll(event);
 
-        let responseObject = {
-            warehouse_name: event.target.name.value,
-            address: event.target.address.value,
-            city: event.target.city.value,
-            country: event.target.country.value,
-            contact_name: event.target.contactName.value,
-            contact_position: event.target.position.value,
-            contact_phone: event.target.phoneNumber.value,
-            contact_email: event.target.email.value
-        }
+        
+            let responseObject = {
+                warehouse_name: event.target.name.value,
+                address: event.target.address.value,
+                city: event.target.city.value,
+                country: event.target.country.value,
+                contact_name: event.target.contactName.value,
+                contact_position: event.target.position.value,
+                contact_phone: event.target.phoneNumber.value,
+                contact_email: event.target.email.value
+            }
 
-        axios.post(`${api_url}/warehouses`, responseObject).then((res) => {
-            alert(res.data.message);
-            navigate('../warehouses')
-        }).catch((err) => {
-            console.log(err);
-        })
+    
+            axios.post(`${api_url}/warehouses`, responseObject).then((res) => {
+                alert(res.data.message);
+                navigate('../warehouses')
+            }).catch((err) => {
+                console.log(err);
+            })
+        ;
+
+        
     }
 
     const handleEdit = (event) => {
@@ -159,6 +167,7 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
 
         validateAll(event);
 
+        if (validateAll(event)) {
         let responseObject = {
             warehouse_name: event.target.name.value,
             address: event.target.address.value,
@@ -175,7 +184,7 @@ function WarehouseDetailsForm({calledFrom, warehouseID}) {
         }).catch((err) => {
             console.log(err);
         })
-    }
+    }}
 
   return (
     <form onSubmit={(calledFrom === "AddWarehousePage" ? handleSubmit : handleEdit )} className="warehouseDetailsForm">

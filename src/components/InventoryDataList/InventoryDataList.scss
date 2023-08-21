@@ -212,6 +212,10 @@
     &__inventoryItem-name {
         color: #2E66E5;
         text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     &__images-container {
