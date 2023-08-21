@@ -113,7 +113,7 @@ function InventoryDetailsForm() {
         "description": event.target.description.value,
         "category": event.target.category.value,
         "status": event.target.status.value,
-        "quantity": event.target.quantity.value
+        "quantity": event.target.status.value === "Out of Stock" ? "0" : event.target.quantity.value
     
     }
 
