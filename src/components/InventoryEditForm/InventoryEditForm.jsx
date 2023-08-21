@@ -35,7 +35,7 @@ function InventoryEditForm() {
       .get(`${process.env.REACT_APP_API_URL}/inventories/${params.itemID}`)
       .then((response) => {
         const inventoryData = response.data;
-        console.log('inventoryData', inventoryData)
+        // console.log('inventoryData', inventoryData)
         setItemName(inventoryData.item_name);
         setDescription(inventoryData.description);
         setCategory(inventoryData.category);
@@ -115,8 +115,9 @@ function InventoryEditForm() {
         res => {
           alert("Successfully edited Inventory Item!");
           navigate('../inventory');
-        }
-      )
+        }).catch((err) => {
+          console.log(err);
+      });
     }
   };
 
